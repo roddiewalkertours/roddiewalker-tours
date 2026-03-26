@@ -322,25 +322,7 @@
       });
     }
 
-    // Função para carregar imagem e converter para base64
-    function loadImageAsBase64(src) {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.crossOrigin = 'Anonymous';
-        img.onload = () => {
-          const canvas = document.createElement('canvas');
-          canvas.width = img.width;
-          canvas.height = img.height;
-          const ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          resolve(canvas.toDataURL('image/png'));
-        };
-        img.onerror = reject;
-        img.src = src + '?t=' + Date.now();
-      });
-    }
-
-    // Função para gerar o panfleto PDF com jsPDF
+    // Função para gerar o panfleto PDF sem imagens externas (apenas texto e QR Code)
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -350,7 +332,7 @@
       try {
         const { jsPDF } = window.jspdf;
         
-        // Criar PDF em formato A5 (148mm x 210mm)
+        // Criar PDF em formato A5
         const pdf = new jsPDF({
           orientation: 'portrait',
           unit: 'mm',
@@ -359,67 +341,55 @@
         
         const pageWidth = pdf.internal.pageSize.getWidth(); // 148mm
         const pageHeight = pdf.internal.pageSize.getHeight(); // 210mm
-        const margin = 8;
+        const margin = 10;
         let yPos = margin;
         
-        // 1. Carregar e adicionar logo
-        const logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
-        if (logoData) {
-          pdf.addImage(logoData, 'PNG', margin, yPos, 10, 10);
-        }
-        
-        // Título
+        // 1. Título (simulando o logo com texto)
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(16);
+        pdf.setFontSize(18);
         pdf.setTextColor(192, 90, 42);
-        pdf.text('Roddie', margin + 12, yPos + 7);
+        pdf.text('Roddie', margin, yPos + 5);
         pdf.setFont('helvetica', 'normal');
         pdf.setTextColor(42, 92, 138);
-        pdf.text('Walker', margin + 12 + pdf.getTextWidth('Roddie'), yPos + 7);
+        pdf.text('Walker', margin + pdf.getTextWidth('Roddie'), yPos + 5);
         
-        yPos += 15;
+        yPos += 12;
         
         // Linha separadora
         pdf.setDrawColor(192, 90, 42);
-        pdf.setLineWidth(0.3);
+        pdf.setLineWidth(0.5);
         pdf.line(margin, yPos, pageWidth - margin, yPos);
+        yPos += 10;
+        
+        // 2. Título da secção "TOURS PRIVADOS"
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(14);
+        pdf.setTextColor(192, 90, 42);
+        pdf.text('TOURS PRIVADOS', margin, yPos);
         yPos += 8;
         
-        // 2. Carregar e adicionar foto do Rodrigo
-        const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
-        const photoWidth = 35;
-        const photoHeight = 35;
-        if (rodPhotoData) {
-          pdf.addImage(rodPhotoData, 'PNG', margin, yPos, photoWidth, photoHeight);
-        }
-        
         // 3. Texto principal
-        const textX = margin + photoWidth + 6;
-        const textWidth = pageWidth - textX - margin;
-        
-        pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(11);
-        pdf.setTextColor(192, 90, 42);
-        pdf.text('TOURS PRIVADOS', textX, yPos + 5);
-        
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(8);
+        pdf.setFontSize(10);
         pdf.setTextColor(28, 26, 24);
         const textLines = pdf.splitTextToSize(
           'Todos os tours estão disponíveis como experiências privadas. Ideal para famílias, casais, eventos corporativos ou celebrações especiais. Itinerários personalizados disponíveis mediante pedido.',
-          textWidth
+          pageWidth - (margin * 2)
         );
-        pdf.text(textLines, textX, yPos + 12);
+        pdf.text(textLines, margin, yPos);
+        yPos += (textLines.length * 5) + 8;
         
         // 4. Informações de contacto
-        const contactY = yPos + 12 + (textLines.length * 4.5) + 8;
         pdf.setFont('helvetica', 'bold');
-        pdf.setFontSize(7);
+        pdf.setFontSize(9);
         pdf.setTextColor(28, 26, 24);
-        pdf.text('Contacte-nos:', textX, contactY);
+        pdf.text('Contacte-nos:', margin, yPos);
+        yPos += 5;
         pdf.setFont('helvetica', 'normal');
-        pdf.text('📧 roddiewalker.tours@gmail.com', textX, contactY + 5);
-        pdf.text('📸 @roddiewalker.tours', textX, contactY + 10);
+        pdf.setFontSize(9);
+        pdf.text('📧 roddiewalker.tours@gmail.com', margin, yPos);
+        yPos += 5;
+        pdf.text('📸 @roddiewalker.tours', margin, yPos);
         
         // 5. QR Code
         const qrCodeData = await new Promise((resolve) => {
@@ -433,22 +403,31 @@
             ctx.drawImage(img, 0, 0);
             resolve(canvas.toDataURL('image/png'));
           };
-          img.onerror = () => resolve(null);
+          img.onerror = () => {
+            // Fallback: criar um QR Code simples com texto
+            resolve(null);
+          };
           img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://www.roddiewalker-tours.com')}&t=${Date.now()}`;
         });
         
         if (qrCodeData) {
-          const qrSize = 25;
+          const qrSize = 30;
           const qrX = pageWidth - margin - qrSize;
           const qrY = pageHeight - margin - qrSize - 5;
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
+        } else {
+          // Fallback: texto simples
+          pdf.setFont('helvetica', 'italic');
+          pdf.setFontSize(7);
+          pdf.setTextColor(122, 110, 98);
+          pdf.text('www.roddiewalker-tours.com', pageWidth - margin - 40, pageHeight - margin - 15);
         }
         
-        // 6. Rodapé
+        // 6. Rodapé com URL
         pdf.setFont('helvetica', 'normal');
-        pdf.setFontSize(6);
+        pdf.setFontSize(7);
         pdf.setTextColor(122, 110, 98);
-        pdf.text('www.roddiewalker-tours.com', margin, pageHeight - margin - 3);
+        pdf.text('www.roddiewalker-tours.com', margin, pageHeight - margin - 5);
         
         // Guardar PDF
         pdf.save('RoddieWalkerTours_Panfleto.pdf');
