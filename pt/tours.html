@@ -8,29 +8,29 @@
   <meta property="og:title" content="Percursos — Roddie Walker Tours">
   <meta property="og:description" content="Tours a pé autênticos em Lisboa com um guia local.">
   <meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="../assets/logo/favicon_512.png" />
+  <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="canonical" href="https://roddiewalker.github.io/roddiewalker-tours/pt/tours.html">
-  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
 
   <header class="site-header">
     <nav class="nav container">
-      <a href="index.html" class="nav__logo-img">
-        <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+      <a href="/pt/index.html" class="nav__logo-img">
+        <img src="/assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
         <span class="nav__logo-text">Roddie<span>Walker</span></span>
       </a>
 
       <ul class="nav__links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="tours.html" class="active">Percursos</a></li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="contact.html">Contacto</a></li>
+        <li><a href="/pt/index.html">Início</a></li>
+        <li><a href="/pt/tours.html" class="active">Percursos</a></li>
+        <li><a href="/pt/about.html">Sobre</a></li>
+        <li><a href="/pt/contact.html">Contacto</a></li>
       </ul>
 
       <div class="nav__lang">
-        <a href="../en/tours.html">EN</a>
-        <a href="../pt/tours.html" class="active">PT</a>
+        <a href="/en/tours.html">EN</a>
+        <a href="/pt/tours.html" class="active">PT</a>
       </div>
 
       <button class="nav__toggle" id="nav-toggle" aria-label="Menu">
@@ -40,14 +40,14 @@
 
     <div id="nav-mobile" class="nav__mobile container">
       <ul class="nav__links">
-        <li><a href="index.html">Início</a></li>
-        <li><a href="tours.html">Percursos</a></li>
-        <li><a href="about.html">Sobre</a></li>
-        <li><a href="contact.html">Contacto</a></li>
+        <li><a href="/pt/index.html">Início</a></li>
+        <li><a href="/pt/tours.html">Percursos</a></li>
+        <li><a href="/pt/about.html">Sobre</a></li>
+        <li><a href="/pt/contact.html">Contacto</a></li>
       </ul>
       <div class="nav__lang">
-        <a href="../en/tours.html">EN</a>
-        <a href="../pt/tours.html" class="active">PT</a>
+        <a href="/en/tours.html">EN</a>
+        <a href="/pt/tours.html" class="active">PT</a>
       </div>
     </div>
   </header>
@@ -68,12 +68,15 @@
   <main>
     <section class="section">
       <div class="container">
+
         <div class="filter-bar" id="filter-bar" aria-label="Filtrar percursos"></div>
+
         <div id="tours-container">
           <p style="color:var(--stone);font-family:var(--ff-ui);text-align:center;padding:48px 0">
             A carregar percursos…
           </p>
         </div>
+
       </div>
     </section>
   </main>
@@ -83,7 +86,7 @@
       <div class="footer-grid">
         <div>
           <div class="footer-logo">
-            <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+            <img src="/assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
             <span>Roddie Walker Tours</span>
           </div>
           <p class="footer__brand-desc">Tours a pé autênticos em Lisboa. Histórias reais, lugares únicos e a perspetiva de quem conhece a cidade de dentro.</p>
@@ -100,19 +103,19 @@
         <div>
           <h4>Percursos</h4>
           <ul class="footer-links">
-            <li><a href="tours.html">Todos os percursos</a></li>
-            <li><a href="tours.html">Lisboa Histórica</a></li>
-            <li><a href="tours.html">Alfama Escondida</a></li>
-            <li><a href="tours.html">Belém Monumental</a></li>
+            <li><a href="/pt/tours.html">Todos os percursos</a></li>
+            <li><a href="/pt/tours.html">Lisboa Histórica</a></li>
+            <li><a href="/pt/tours.html">Alfama Escondida</a></li>
+            <li><a href="/pt/tours.html">Belém Monumental</a></li>
           </ul>
         </div>
         <div>
           <h4>Páginas</h4>
           <ul class="footer-links">
-            <li><a href="index.html">Início</a></li>
-            <li><a href="about.html">Sobre o guia</a></li>
-            <li><a href="contact.html">Contacto</a></li>
-            <li><a href="../en/tours.html">English version</a></li>
+            <li><a href="/pt/index.html">Início</a></li>
+            <li><a href="/pt/about.html">Sobre o guia</a></li>
+            <li><a href="/pt/contact.html">Contacto</a></li>
+            <li><a href="/en/tours.html">English version</a></li>
           </ul>
         </div>
       </div>
@@ -122,6 +125,16 @@
     </div>
   </footer>
 
-  <script src="../assets/js/scripts.js"></script>
+  <script src="/assets/js/scripts.js"></script>
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-mobile');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+      });
+    }
+  </script>
 </body>
 </html>
