@@ -8,15 +8,25 @@
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <style>
-    /* Estilos para o panfleto (A5) */
+    /* Estilos para o panfleto (A5) - visível apenas na impressão */
+    .flyer-print {
+      display: none;
+    }
+    
     @media print {
+      /* Esconde tudo exceto o panfleto */
       body * {
         visibility: hidden;
+        display: none !important;
       }
+      
       .flyer-print, .flyer-print * {
         visibility: visible;
+        display: block !important;
       }
+      
       .flyer-print {
+        display: block !important;
         position: fixed;
         top: 0;
         left: 0;
@@ -25,21 +35,29 @@
         margin: 0;
         padding: 0;
         background: white;
+        visibility: visible !important;
       }
+      
       @page {
         size: A5;
-        margin: 0.8cm;
+        margin: 0.5cm;
+      }
+      
+      body {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: white;
       }
     }
     
     .flyer-print {
-      display: none;
       width: 14.8cm;
       height: 21cm;
       padding: 0.8cm;
       background: white;
       font-family: 'Playfair Display', Georgia, serif;
       box-sizing: border-box;
+      position: relative;
     }
     
     .flyer-header {
@@ -118,9 +136,6 @@
       font-size: 0.65rem;
       color: #7A6E62;
       font-family: 'DM Sans', sans-serif;
-    }
-    .flyer-print {
-      position: relative;
     }
   </style>
 </head>
@@ -461,7 +476,7 @@
       });
     }
 
-    // Function to generate QR Code and print
+    // Function to generate flyer (print)
     function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -472,16 +487,20 @@
       const url = 'https://www.roddiewalker-tours.com';
       
       qrImg.onload = function() {
-        window.print();
-        button.innerHTML = originalText;
-        button.disabled = false;
+        setTimeout(function() {
+          window.print();
+          button.innerHTML = originalText;
+          button.disabled = false;
+        }, 500);
       };
       
       qrImg.onerror = function() {
         console.log('QR Code not loaded, printing without QR');
-        window.print();
-        button.innerHTML = originalText;
-        button.disabled = false;
+        setTimeout(function() {
+          window.print();
+          button.innerHTML = originalText;
+          button.disabled = false;
+        }, 500);
       };
       
       qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}&t=${Date.now()}`;
