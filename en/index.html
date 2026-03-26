@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Roddie Walker Tours — Discover Lisbon on Foot</title>
+  <meta name="description" content="Authentic walking tours in Lisbon with a local guide. Explore Alfama, Belém, and hidden gems of the city." />
+  <meta name="keywords" content="Lisbon walking tours, guided tours Lisbon, Alfama tour, Belém tour, Lisbon history" />
+  <link rel="icon" type="image/png" href="../assets/logo/favicon_512.png" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo-img">
+        <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+        <span class="nav__logo-text">Roddie<span>Walker</span></span>
+      </a>
+
+      <ul class="nav__links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+
+      <div class="nav__lang">
+        <a href="../en/index.html" class="active">EN</a>
+        <a href="../pt/index.html">PT</a>
+      </div>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div id="nav-mobile" class="nav__mobile container">
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tours.html">Tours</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div class="nav__lang">
+        <a href="../en/index.html" class="active">EN</a>
+        <a href="../pt/index.html">PT</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-with-slideshow">
+    <div class="hero__bg"></div>
+    <div class="hero__pattern"></div>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__eyebrow">Lisbon · Portugal</span>
+        <h1 class="hero__title">
+          Discover<br>Lisbon<br><em>on Foot</em>
+        </h1>
+        <p class="hero__subtitle">
+          Walk the city's ancient streets with a local guide who knows its stories, secrets, and soul. Every step is a page of history.
+        </p>
+        <div class="hero__cta">
+          <a href="tours.html" class="btn btn--primary">Explore Tours</a>
+          <a href="contact.html" class="btn btn--outline">Book Now</a>
+        </div>
+        <div style="display:flex;gap:2rem;align-items:center;margin-top:40px;">
+          <div>
+            <strong style="font-family:var(--ff-display);font-size:1.5rem;color:var(--gold);">★ 5.0</strong>
+            <span style="font-family:var(--ff-ui);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(245,239,230,0.6);display:block;">Tripadvisor Rating</span>
+          </div>
+          <div style="width:1px;height:36px;background:rgba(245,239,230,0.3);"></div>
+          <div>
+            <strong style="font-family:var(--ff-display);font-size:1.5rem;color:var(--gold);">500+</strong>
+            <span style="font-family:var(--ff-ui);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.1em;color:rgba(245,239,230,0.6);display:block;">Guests Guided</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-slideshow" id="slideshow-container"></div>
+    </div>
+  </section>
+
+  <div class="stats-strip">
+    <div class="stat-item">
+      <span class="stat-number">6</span>
+      <span class="stat-label">Tour Routes</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">3h</span>
+      <span class="stat-label">Avg. Duration</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">2</span>
+      <span class="stat-label">Languages</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-number">∞</span>
+      <span class="stat-label">Stories to Tell</span>
+    </div>
+  </div>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Walking Experiences</span>
+        <h2>Choose Your Adventure</h2>
+        <p>Each tour is a carefully crafted narrative through Lisbon's most captivating neighbourhoods and monuments.</p>
+      </div>
+      <div class="tours-grid">
+        <article class="tour-card reveal">
+          <div class="tour-card__img-wrap">
+            <img class="tour-card__img" src="../assets/photos/alfama.jpg" alt="Alfama" loading="lazy">
+          </div>
+          <div class="tour-card__body">
+            <div class="tour-meta">
+              <span>⏱ 3 hours</span>
+              <span>★ Easy</span>
+              <span>🌐 EN · PT</span>
+            </div>
+            <h3>Hidden Alfama</h3>
+            <p>Wander the oldest neighbourhood in Lisbon. Discover Moorish alleys, viewpoints, and the birthplace of Fado.</p>
+            <div class="tour-card-footer">
+              <div class="tour-price">€35 <small>per person</small></div>
+              <a href="tours.html" class="btn btn--outline-dark">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour-card reveal">
+          <div class="tour-card__img-wrap">
+            <img class="tour-card__img" src="../assets/photos/belem.jpg" alt="Belém" loading="lazy">
+          </div>
+          <div class="tour-card__body">
+            <div class="tour-meta">
+              <span>⏱ 3.5 hours</span>
+              <span>★ Moderate</span>
+              <span>🌐 EN · PT</span>
+            </div>
+            <h3>Monumental Belém</h3>
+            <p>Trace Portugal's Age of Discovery along the Tagus riverfront — monuments, pastéis, and maritime legends.</p>
+            <div class="tour-card-footer">
+              <div class="tour-price">€35 <small>per person</small></div>
+              <a href="tours.html" class="btn btn--outline-dark">Details</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tour-card reveal">
+          <div class="tour-card__img-wrap">
+            <img class="tour-card__img" src="../assets/photos/lisbon-historical.jpg" alt="Historical Lisbon" loading="lazy">
+          </div>
+          <div class="tour-card__body">
+            <div class="tour-meta">
+              <span>⏱ 2.5 hours</span>
+              <span>★ Easy</span>
+              <span>🌐 EN · PT</span>
+            </div>
+            <h3>Historical Lisbon</h3>
+            <p>From the Pombaline grid of Baixa to the hilltop São Jorge Castle — the city's 3,000 years in one walk.</p>
+            <div class="tour-card-footer">
+              <div class="tour-price">€30 <small>per person</small></div>
+              <a href="tours.html" class="btn btn--outline-dark">Details</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="text-center mt-4">
+        <a href="tours.html" class="btn btn--primary">View All Tours</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container">
+      <div class="about-grid">
+        <div>
+          <img src="../assets/photos/Rod-photo.png" alt="Rodrigo, your local guide in Lisbon" style="width:100%; height:auto; border-radius:var(--radius-lg); object-fit:cover;" />
+        </div>
+        <div class="about-text">
+          <span class="eyebrow">Your Guide</span>
+          <h2>Meet Rodrigo</h2>
+          <blockquote>"Lisbon is a city that rewards the curious — every tile, every alley has a story waiting to be told."</blockquote>
+          <p>Born and raised in Lisbon, Rodrigo has spent years studying the city's history, architecture, and culture — and even more time exploring its streets. With experience guiding for TakingUThere, he brings a rare combination of academic depth and genuine local warmth to every tour.</p>
+          <p>He believes that the best way to understand a city is through its people, its food, and the unexpected details that guidebooks miss.</p>
+          <a href="about.html" class="btn btn--outline-dark mt-3">Read His Story</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Reviews</span>
+        <h2>What Guests Say</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>Rodrigo brought Alfama to life in a way I never expected. Two hours felt like twenty minutes. The stories he knows about every doorstep and corner are just incredible.</blockquote>
+          <span class="testimonial-author">— Sarah M., United Kingdom</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>The Belém tour was the highlight of our entire trip to Portugal. Informative, personal, funny — exactly the kind of experience that makes travel feel worthwhile.</blockquote>
+          <span class="testimonial-author">— Jonas K., Germany</span>
+        </div>
+        <div class="testimonial-card">
+          <div class="stars">★★★★★</div>
+          <blockquote>We booked the food & culture tour on a whim and it turned into the best decision we made. Rodrigo knows where to eat, what to taste, and why it all matters.</blockquote>
+          <span class="testimonial-author">— Ana R., Brazil</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="instagram-strip bg-cream">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Instagram</span>
+        <h2>Follow the Journey</h2>
+        <p><a href="https://instagram.com/roddiewalker.tours" target="_blank" style="color:var(--azulejo);">@roddiewalker.tours</a></p>
+      </div>
+      <div class="insta-grid">
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-1.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-2.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-3.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-4.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-5.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+        <div class="insta-item">
+          <img src="../assets/photos/lisbon-6.jpg" alt="Lisbon" style="width:100%; height:100%; object-fit:cover;">
+        </div>
+      </div>
+      <div class="text-center mt-4">
+        <a href="https://instagram.com/roddiewalker.tours" target="_blank" class="btn btn--outline-dark">Follow on Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="tile-accent-section">
+    <div class="container" style="text-align:center;">
+      <span class="eyebrow" style="color:var(--gold);">Ready to Explore?</span>
+      <h2 style="color:white;max-width:600px;margin:0 auto 24px;">Every Walk Begins with a Single Step</h2>
+      <p style="color:rgba(255,255,255,0.65);max-width:500px;margin:0 auto 40px;">Reserve your spot on one of our walking tours and let Lisbon's stories find you.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="tours.html" class="btn btn--primary">Browse All Tours</a>
+        <a href="contact.html" class="btn" style="background:rgba(255,255,255,0.1);color:white;border:1.5px solid rgba(255,255,255,0.3);">Get in Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+            <span>Roddie Walker Tours</span>
+          </div>
+          <p class="footer__brand-desc">Authentic walking tours in Lisbon led by a passionate local guide. Discover the city one story at a time.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/roddiewalker.tours" target="_blank" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.73.13 4.617.383 3.66 1.34 2.703 2.297 2.45 3.41 2.392 4.732 2.334 6.012 2.32 6.421 2.32 9.68s.014 3.668.072 4.948c.058 1.322.311 2.435 1.268 3.392.957.957 2.07 1.21 3.392 1.268 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c1.322-.058 2.435-.311 3.392-1.268.957-.957 1.21-2.07 1.268-3.392.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.311-2.435-1.268-3.392-.957-.957-2.07-1.21-3.392-1.268C15.668.014 15.259 0 12 0z"/>
+                <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                <circle cx="18.406" cy="5.594" r="1.44"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="tours.html">Tours</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Language</h4>
+          <ul class="footer-links">
+            <li><a href="../pt/index.html">Ver em Português</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Roddie Walker Tours · Lisbon, Portugal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/scripts.js"></script>
+  <script>
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-mobile');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+      });
+    }
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

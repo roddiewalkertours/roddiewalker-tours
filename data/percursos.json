@@ -1,0 +1,238 @@
+{
+  "tours": [
+    {
+      "id": "lisbon-historical",
+      "slug": "lisboa-historica",
+      "featured": true,
+      "image": "../assets/photos/lisbon-historical.jpg",
+      "duration_hours": 2.5,
+      "difficulty": "easy",
+      "price_eur": 25,
+      "max_group": 10,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Lisboa Histórica",
+        "tagline": "Das origens mouriscas à Lisboa pombalina",
+        "description": "Um percurso a pé pelo coração histórico de Lisboa, desde a Mouraria até à Baixa Pombalina. Descubra os segredos das ruas medievais, os azulejos e a alma desta cidade milenária.",
+        "difficulty_label": "Fácil",
+        "itinerary": [
+          { "order": 1, "stop": "Rossio", "note": "Ponto de encontro. A praça que nunca dorme." },
+          { "order": 2, "stop": "Rua Augusta", "note": "O coração comercial pombalino." },
+          { "order": 3, "stop": "Praça do Comércio", "note": "A porta de entrada de Lisboa pelo Tejo." },
+          { "order": 4, "stop": "Sé de Lisboa", "note": "A catedral mais antiga da cidade, séc. XII." },
+          { "order": 5, "stop": "Mouraria", "note": "O bairro onde nasceu o Fado e a alma mourisca persiste." },
+          { "order": 6, "stop": "Castelo de São Jorge", "note": "Vista panorâmica e 3000 anos de história." }
+        ]
+      },
+      "en": {
+        "name": "Historical Lisbon",
+        "tagline": "From Moorish origins to Pombaline Lisbon",
+        "description": "A walking tour through the historic heart of Lisbon, from Mouraria to the Pombaline Downtown. Uncover the secrets of medieval streets, azulejos, and the soul of this ancient city.",
+        "difficulty_label": "Easy",
+        "itinerary": [
+          { "order": 1, "stop": "Rossio", "note": "Meeting point. The square that never sleeps." },
+          { "order": 2, "stop": "Rua Augusta", "note": "The heart of Pombaline commerce." },
+          { "order": 3, "stop": "Praça do Comércio", "note": "Lisbon's grand gateway to the Tagus." },
+          { "order": 4, "stop": "Lisbon Cathedral", "note": "The oldest cathedral in the city, 12th century." },
+          { "order": 5, "stop": "Mouraria", "note": "The neighbourhood where Fado was born." },
+          { "order": 6, "stop": "São Jorge Castle", "note": "Panoramic views and 3000 years of history." }
+        ]
+      }
+    },
+    {
+      "id": "alfama-hidden",
+      "slug": "alfama-escondida",
+      "featured": true,
+      "image": "../assets/photos/alfama.jpg",
+      "duration_hours": 2,
+      "difficulty": "moderate",
+      "price_eur": 25,
+      "max_group": 8,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Alfama Escondida",
+        "tagline": "Os segredos do bairro mais antigo de Lisboa",
+        "description": "Perca-se nas vielas de Alfama com um guia local. Descubra pátios secretos, igrejas esquecidas, miradouros improváveis e as histórias que os turistas nunca ouvem.",
+        "difficulty_label": "Moderado",
+        "itinerary": [
+          { "order": 1, "stop": "Portas do Sol", "note": "Ponto de partida com vista para o Tejo." },
+          { "order": 2, "stop": "Beco do Carneiro", "note": "Uma das vielas mais pitorescas da cidade." },
+          { "order": 3, "stop": "Igreja de Santo Estêvão", "note": "Azulejos que poucos turistas conhecem." },
+          { "order": 4, "stop": "Pátio interior de Alfama", "note": "A vida real do bairro, longe das câmeras." },
+          { "order": 5, "stop": "Miradouro de Santa Luzia", "note": "Rosas, glória e vista sobre os telhados." },
+          { "order": 6, "stop": "Tasca escondida", "note": "Um copo de vinho onde só os locais vão." }
+        ]
+      },
+      "en": {
+        "name": "Hidden Alfama",
+        "tagline": "Secrets of Lisbon's oldest neighbourhood",
+        "description": "Get lost in the alleyways of Alfama with a local guide. Discover secret courtyards, forgotten churches, unlikely viewpoints and the stories tourists never hear.",
+        "difficulty_label": "Moderate",
+        "itinerary": [
+          { "order": 1, "stop": "Portas do Sol", "note": "Starting point with views over the Tagus." },
+          { "order": 2, "stop": "Beco do Carneiro", "note": "One of the most picturesque alleys in the city." },
+          { "order": 3, "stop": "Church of Santo Estêvão", "note": "Azulejo tiles few tourists ever see." },
+          { "order": 4, "stop": "Alfama inner courtyard", "note": "Real neighbourhood life, away from cameras." },
+          { "order": 5, "stop": "Santa Luzia Viewpoint", "note": "Roses, glory and a rooftop panorama." },
+          { "order": 6, "stop": "Hidden tasca", "note": "A glass of wine where only locals go." }
+        ]
+      }
+    },
+    {
+      "id": "belem-monumental",
+      "slug": "belem-monumental",
+      "featured": true,
+      "image": "../assets/photos/belem.jpg",
+      "duration_hours": 3,
+      "difficulty": "easy",
+      "price_eur": 28,
+      "max_group": 12,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Belém Monumental",
+        "tagline": "A herança dos descobrimentos à beira do Tejo",
+        "description": "Explore o bairro de Belém, onde Portugal partiu para descobrir o mundo. Da Torre ao Mosteiro dos Jerónimos, reviva a era dos descobrimentos com histórias que os livros não contam.",
+        "difficulty_label": "Fácil",
+        "itinerary": [
+          { "order": 1, "stop": "Praça do Império", "note": "Onde tudo começa — o jardim dos impérios." },
+          { "order": 2, "stop": "Mosteiro dos Jerónimos", "note": "A obra-prima do Manuelino e o túmulo de Camões." },
+          { "order": 3, "stop": "Pastelaria de Belém", "note": "O pastel de nata original desde 1837." },
+          { "order": 4, "stop": "Padrão dos Descobrimentos", "note": "Os 33 protagonistas da expansão portuguesa." },
+          { "order": 5, "stop": "Torre de Belém", "note": "O ícone que guardou a entrada do Tejo." },
+          { "order": 6, "stop": "Margem do Tejo", "note": "O mesmo horizonte que os navegadores viram." }
+        ]
+      },
+      "en": {
+        "name": "Monumental Belém",
+        "tagline": "The legacy of the Age of Discoveries by the Tagus",
+        "description": "Explore the Belém district, where Portugal set sail to discover the world. From the Tower to the Jerónimos Monastery, relive the Age of Discoveries with stories the books don't tell.",
+        "difficulty_label": "Easy",
+        "itinerary": [
+          { "order": 1, "stop": "Praça do Império", "note": "Where everything begins — the garden of empires." },
+          { "order": 2, "stop": "Jerónimos Monastery", "note": "The Manueline masterpiece and Camões' tomb." },
+          { "order": 3, "stop": "Pastéis de Belém", "note": "The original custard tart bakery since 1837." },
+          { "order": 4, "stop": "Monument to the Discoveries", "note": "The 33 protagonists of Portuguese expansion." },
+          { "order": 5, "stop": "Tower of Belém", "note": "The icon that guarded the mouth of the Tagus." },
+          { "order": 6, "stop": "Tagus riverbank", "note": "The same horizon the navigators once gazed upon." }
+        ]
+      }
+    },
+    {
+      "id": "literario",
+      "slug": "lisboa-literaria",
+      "featured": false,
+      "image": "../assets/photos/literaria.jpg",
+      "duration_hours": 2,
+      "difficulty": "easy",
+      "price_eur": 22,
+      "max_group": 8,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Lisboa Literária",
+        "tagline": "Nas pegadas de Pessoa, Saramago e Eça",
+        "description": "Um passeio pelas ruas que inspiraram os grandes escritores portugueses. Dos cafés onde Pessoa escrevia às ruas de Eça, a cidade como palco literário.",
+        "difficulty_label": "Fácil",
+        "itinerary": [
+          { "order": 1, "stop": "A Brasileira", "note": "O café de Pessoa — a estátua e o espírito." },
+          { "order": 2, "stop": "Livraria Bertrand", "note": "A livraria mais antiga do mundo em funcionamento." },
+          { "order": 3, "stop": "Largo de Camões", "note": "Homenagem ao épico dos descobrimentos." },
+          { "order": 4, "stop": "Bairro Alto", "note": "Onde a boémia literária ganhou vida." },
+          { "order": 5, "stop": "Casa Fernando Pessoa", "note": "A morada do poeta e o seu espólio." }
+        ]
+      },
+      "en": {
+        "name": "Literary Lisbon",
+        "tagline": "In the footsteps of Pessoa, Saramago and Eça",
+        "description": "A walk through the streets that inspired Portugal's greatest writers. From the cafés where Pessoa wrote to the neighbourhoods of Eça, the city as a literary stage.",
+        "difficulty_label": "Easy",
+        "itinerary": [
+          { "order": 1, "stop": "A Brasileira", "note": "Pessoa's café — the statue and the spirit." },
+          { "order": 2, "stop": "Livraria Bertrand", "note": "The oldest operating bookshop in the world." },
+          { "order": 3, "stop": "Largo de Camões", "note": "Tribute to the epic poet of the Discoveries." },
+          { "order": 4, "stop": "Bairro Alto", "note": "Where literary bohemia came alive." },
+          { "order": 5, "stop": "Casa Fernando Pessoa", "note": "The poet's home and his legacy." }
+        ]
+      }
+    },
+    {
+      "id": "street-art",
+      "slug": "arte-urbana",
+      "featured": false,
+      "image": "../assets/photos/streetart.jpg",
+      "duration_hours": 2,
+      "difficulty": "easy",
+      "price_eur": 22,
+      "max_group": 10,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Arte Urbana & Lisboa Alternativa",
+        "tagline": "A cidade como galeria a céu aberto",
+        "description": "De LX Factory ao Intendente, descubra a Lisboa criativa, irreverente e contemporânea. Murais, coletivos artísticos e a geração que está a reinventar a cidade.",
+        "difficulty_label": "Fácil",
+        "itinerary": [
+          { "order": 1, "stop": "LX Factory", "note": "A fábrica que se tornou capital criativa." },
+          { "order": 2, "stop": "Bairro da Mouraria", "note": "Murais que contam histórias de imigração e identidade." },
+          { "order": 3, "stop": "Intendente", "note": "O bairro que renasceu com arte e diversidade." },
+          { "order": 4, "stop": "Calçada da Glória", "note": "Street art com vista para a cidade." },
+          { "order": 5, "stop": "Cais do Sodré", "note": "A zona ribeirinha e a sua reinvenção cultural." }
+        ]
+      },
+      "en": {
+        "name": "Street Art & Alternative Lisbon",
+        "tagline": "The city as an open-air gallery",
+        "description": "From LX Factory to Intendente, discover creative, irreverent and contemporary Lisbon. Murals, artistic collectives and the generation reinventing the city.",
+        "difficulty_label": "Easy",
+        "itinerary": [
+          { "order": 1, "stop": "LX Factory", "note": "The factory that became a creative capital." },
+          { "order": 2, "stop": "Mouraria neighbourhood", "note": "Murals telling stories of immigration and identity." },
+          { "order": 3, "stop": "Intendente", "note": "The neighbourhood reborn through art and diversity." },
+          { "order": 4, "stop": "Calçada da Glória", "note": "Street art with views over the city." },
+          { "order": 5, "stop": "Cais do Sodré", "note": "The riverside district and its cultural reinvention." }
+        ]
+      }
+    },
+    {
+      "id": "food-culture",
+      "slug": "comida-e-cultura",
+      "featured": false,
+      "image": "../assets/photos/food.jpg",
+      "duration_hours": 3,
+      "difficulty": "easy",
+      "price_eur": 35,
+      "max_group": 8,
+      "languages": ["pt", "en"],
+      "booking_url": "https://calendly.com/roddiewalker",
+      "pt": {
+        "name": "Comida & Cultura",
+        "tagline": "O sabor de Lisboa contado a cada esquina",
+        "description": "Um percurso gastronómico e cultural pelos mercados, tascas e sabores tradicionais de Lisboa. Prove, descubra e compreenda a cidade através da sua cozinha.",
+        "difficulty_label": "Fácil",
+        "itinerary": [
+          { "order": 1, "stop": "Mercado da Ribeira", "note": "O Time Out Market e o mercado original lado a lado." },
+          { "order": 2, "stop": "Tasca tradicional", "note": "Petiscos e histórias com os locais." },
+          { "order": 3, "stop": "Padaria típica", "note": "Pão, bolos e a rotina matinal lisboeta." },
+          { "order": 4, "stop": "Mercearia de bairro", "note": "Produtos artesanais e produtores locais." },
+          { "order": 5, "stop": "Pastelaria histórica", "note": "Café e pastel — o ritual sagrado." }
+        ]
+      },
+      "en": {
+        "name": "Food & Culture",
+        "tagline": "The taste of Lisbon told at every corner",
+        "description": "A gastronomic and cultural route through the markets, tascas and traditional flavours of Lisbon. Taste, discover and understand the city through its cuisine.",
+        "difficulty_label": "Easy",
+        "itinerary": [
+          { "order": 1, "stop": "Mercado da Ribeira", "note": "The Time Out Market and the original market side by side." },
+          { "order": 2, "stop": "Traditional tasca", "note": "Petiscos and stories with the locals." },
+          { "order": 3, "stop": "Typical bakery", "note": "Bread, pastries and the Lisbon morning routine." },
+          { "order": 4, "stop": "Neighbourhood deli", "note": "Artisan products and local producers." },
+          { "order": 5, "stop": "Historic pastry shop", "note": "Coffee and pastel de nata — the sacred ritual." }
+        ]
+      }
+    }
+  ]
+}

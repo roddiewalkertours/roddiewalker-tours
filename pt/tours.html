@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Percursos — Roddie Walker Tours Lisboa</title>
+  <meta name="description" content="Descubra os percursos a pé disponíveis em Lisboa com o Roddie Walker Tours. Alfama, Belém, Lisboa Histórica, Arte Urbana e muito mais.">
+  <meta property="og:title" content="Percursos — Roddie Walker Tours">
+  <meta property="og:description" content="Tours a pé autênticos em Lisboa com um guia local.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/png" href="../assets/logo/favicon_512.png" />
+  <link rel="canonical" href="https://roddiewalker.github.io/roddiewalker-tours/pt/tours.html">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <nav class="nav container">
+      <a href="index.html" class="nav__logo-img">
+        <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+        <span class="nav__logo-text">Roddie<span>Walker</span></span>
+      </a>
+
+      <ul class="nav__links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tours.html" class="active">Percursos</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+
+      <div class="nav__lang">
+        <a href="../en/tours.html">EN</a>
+        <a href="../pt/tours.html" class="active">PT</a>
+      </div>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <div id="nav-mobile" class="nav__mobile container">
+      <ul class="nav__links">
+        <li><a href="index.html">Início</a></li>
+        <li><a href="tours.html">Percursos</a></li>
+        <li><a href="about.html">Sobre</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+      <div class="nav__lang">
+        <a href="../en/tours.html">EN</a>
+        <a href="../pt/tours.html" class="active">PT</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero-with-slideshow">
+    <div class="hero__bg"></div>
+    <div class="hero__pattern"></div>
+    <div class="container">
+      <div class="hero__content">
+        <p class="hero__eyebrow">Lisboa a pé</p>
+        <h1 class="hero__title">Os nossos Percursos</h1>
+        <p class="hero__subtitle">Cada rota é uma história contada passo a passo. Escolha o percurso que mais se aproxima do que procura — ou faça todos.</p>
+      </div>
+      <div class="hero-slideshow" id="slideshow-container"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="section">
+      <div class="container">
+        <div class="filter-bar" id="filter-bar" aria-label="Filtrar percursos"></div>
+        <div id="tours-container">
+          <p style="color:var(--stone);font-family:var(--ff-ui);text-align:center;padding:48px 0">
+            A carregar percursos…
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="../assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+            <span>Roddie Walker Tours</span>
+          </div>
+          <p class="footer__brand-desc">Tours a pé autênticos em Lisboa. Histórias reais, lugares únicos e a perspetiva de quem conhece a cidade de dentro.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/roddiewalker.tours" target="_blank" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.73.13 4.617.383 3.66 1.34 2.703 2.297 2.45 3.41 2.392 4.732 2.334 6.012 2.32 6.421 2.32 9.68s.014 3.668.072 4.948c.058 1.322.311 2.435 1.268 3.392.957.957 2.07 1.21 3.392 1.268 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c1.322-.058 2.435-.311 3.392-1.268.957-.957 1.21-2.07 1.268-3.392.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.311-2.435-1.268-3.392-.957-.957-2.07-1.21-3.392-1.268C15.668.014 15.259 0 12 0z"/>
+                <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                <circle cx="18.406" cy="5.594" r="1.44"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Percursos</h4>
+          <ul class="footer-links">
+            <li><a href="tours.html">Todos os percursos</a></li>
+            <li><a href="tours.html">Lisboa Histórica</a></li>
+            <li><a href="tours.html">Alfama Escondida</a></li>
+            <li><a href="tours.html">Belém Monumental</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Páginas</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="about.html">Sobre o guia</a></li>
+            <li><a href="contact.html">Contacto</a></li>
+            <li><a href="../en/tours.html">English version</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Roddie Walker Tours · Lisboa, Portugal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/scripts.js"></script>
+</body>
+</html>
