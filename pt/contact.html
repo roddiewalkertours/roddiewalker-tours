@@ -7,120 +7,10 @@
   <meta name="description" content="Reserve um tour a pé em Lisboa ou entre em contacto com o Rodrigo. Email, Instagram e formulário de reserva disponíveis." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
-  <!-- Bibliotecas para gerar PDF -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <style>
-    /* Estilos para o flyer (A5 - 14.8cm x 21cm) */
     .flyer-container {
       display: none;
-    }
-    .flyer {
-      width: 14.8cm;
-      height: 21cm;
-      padding: 0.8cm;
-      background: white;
-      font-family: 'Playfair Display', Georgia, serif;
-      position: relative;
-      box-sizing: border-box;
-    }
-    .flyer-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #C05A2A;
-      padding-bottom: 12px;
-    }
-    .flyer-header img {
-      width: 50px;
-      height: 50px;
-      object-fit: contain;
-    }
-    .flyer-header h1 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      color: #C05A2A;
-      margin: 0;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-    .flyer-header h1 span {
-      color: #2A5C8A;
-      font-weight: 400;
-    }
-    .flyer-content {
-      display: flex;
-      gap: 20px;
-      margin-bottom: 20px;
-    }
-    .flyer-photo {
-      flex-shrink: 0;
-      width: 100px;
-      height: auto;
-    }
-    .flyer-photo img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      object-fit: cover;
-    }
-    .flyer-text {
-      flex: 1;
-      font-size: 0.75rem;
-      line-height: 1.5;
-      color: #1C1A18;
-    }
-    .flyer-text h3 {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: #C05A2A;
-      margin-bottom: 8px;
-      font-family: 'Playfair Display', Georgia, serif;
-    }
-    .flyer-text p {
-      margin: 0 0 12px 0;
-    }
-    .flyer-qr {
-      position: absolute;
-      bottom: 0.8cm;
-      right: 0.8cm;
-      width: 80px;
-      height: 80px;
-      background: #f0f0f0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid #ddd;
-    }
-    .flyer-qr img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-    .flyer-footer {
-      position: absolute;
-      bottom: 0.8cm;
-      left: 0.8cm;
-      font-size: 0.65rem;
-      color: #7A6E62;
-      font-family: 'DM Sans', sans-serif;
-    }
-    @media print {
-      body * {
-        visibility: hidden;
-      }
-      .flyer, .flyer * {
-        visibility: visible;
-      }
-      .flyer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        height: 100%;
-      }
     }
   </style>
 </head>
@@ -382,32 +272,6 @@
     </div>
   </footer>
 
-  <!-- Container oculto para o flyer -->
-  <div class="flyer-container" id="flyer-container">
-    <div class="flyer" id="flyer-content">
-      <div class="flyer-header">
-        <img src="/assets/logo/favicon_512.png" alt="Roddie Walker Tours">
-        <h1>Roddie<span>Walker</span></h1>
-      </div>
-      <div class="flyer-content">
-        <div class="flyer-photo">
-          <img src="/assets/photos/Rod-photo.png" alt="Rodrigo">
-        </div>
-        <div class="flyer-text">
-          <h3>TOURS PRIVADOS</h3>
-          <p>Todos os tours estão disponíveis como experiências privadas. Ideal para famílias, casais, eventos corporativos ou celebrações especiais. Itinerários personalizados disponíveis mediante pedido.</p>
-          <p style="margin-top:12px;"><strong>Contacte-nos:</strong><br>📧 roddiewalker.tours@gmail.com<br>📸 @roddiewalker.tours</p>
-        </div>
-      </div>
-      <div class="flyer-qr" id="qr-code-placeholder">
-        <!-- QR Code será gerado aqui -->
-      </div>
-      <div class="flyer-footer">
-        www.roddiewalker-tours.com
-      </div>
-    </div>
-  </div>
-
   <script src="/assets/js/scripts.js"></script>
   <script>
     const toggle = document.getElementById('nav-toggle');
@@ -464,36 +328,7 @@
       });
     }
 
-    // Função para gerar QR Code
-    function generateQRCode() {
-      const qrContainer = document.getElementById('qr-code-placeholder');
-      qrContainer.innerHTML = ''; // Limpar conteúdo existente
-      
-      // Criar um canvas para o QR Code
-      const canvas = document.createElement('canvas');
-      canvas.width = 80;
-      canvas.height = 80;
-      const ctx = canvas.getContext('2d');
-      
-      // URL do site
-      const url = 'https://www.roddiewalker-tours.com';
-      
-      // Usar a API do QRServer (gratuita, sem necessidade de bibliotecas externas)
-      const img = document.createElement('img');
-      img.src = `https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=${encodeURIComponent(url)}`;
-      img.style.width = '80px';
-      img.style.height = '80px';
-      img.alt = 'QR Code';
-      img.onload = function() {
-        qrContainer.appendChild(img);
-      };
-      img.onerror = function() {
-        // Fallback: mostrar texto se o QR não carregar
-        qrContainer.innerHTML = '<div style="font-size:10px;text-align:center;">📱<br>www.roddiewalker-tours.com</div>';
-      };
-    }
-
-    // Função para gerar o panfleto PDF
+    // Função para gerar o panfleto PDF diretamente
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -501,44 +336,93 @@
       button.disabled = true;
       
       try {
-        // Gerar QR Code primeiro
-        await new Promise((resolve) => {
-          generateQRCode();
-          setTimeout(resolve, 500); // Aguardar carregamento do QR
-        });
-        
-        const flyerElement = document.getElementById('flyer-content');
-        
-        // Usar html2canvas para capturar o flyer
-        const canvas = await html2canvas(flyerElement, {
-          scale: 3,
-          backgroundColor: '#ffffff',
-          logging: false,
-          useCORS: true
-        });
-        
-        const imgData = canvas.toDataURL('image/png');
+        const { jsPDF } = window.jspdf;
         
         // Criar PDF em formato A5 (14.8cm x 21cm)
-        const { jsPDF } = window.jspdf;
         const pdf = new jsPDF({
           orientation: 'portrait',
-          unit: 'cm',
+          unit: 'mm',
           format: 'a5'
         });
         
-        // Adicionar imagem ao PDF (ajustar para ocupar a página inteira)
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imgWidth = canvas.width;
-        const imgHeight = canvas.height;
-        const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-        const width = imgWidth * ratio;
-        const height = imgHeight * ratio;
-        const x = (pdfWidth - width) / 2;
-        const y = (pdfHeight - height) / 2;
+        const pageWidth = pdf.internal.pageSize.getWidth(); // 148mm
+        const pageHeight = pdf.internal.pageSize.getHeight(); // 210mm
+        const margin = 8; // mm
+        let y = margin;
         
-        pdf.addImage(imgData, 'PNG', x, y, width, height);
+        // 1. Logo e título
+        const logoImg = await loadImage('/assets/logo/favicon_512.png');
+        if (logoImg) {
+          pdf.addImage(logoImg, 'PNG', margin, y, 10, 10);
+        }
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(18);
+        pdf.setTextColor(192, 90, 42); // #C05A2A
+        pdf.text('Roddie', margin + 14, y + 7);
+        pdf.setFont('helvetica', 'normal');
+        pdf.setTextColor(42, 92, 138); // #2A5C8A
+        pdf.text('Walker', margin + 14 + pdf.getTextWidth('Roddie'), y + 7);
+        
+        y += 18;
+        
+        // Linha separadora
+        pdf.setDrawColor(192, 90, 42);
+        pdf.setLineWidth(0.5);
+        pdf.line(margin, y, pageWidth - margin, y);
+        y += 10;
+        
+        // 2. Foto do Rodrigo
+        const rodPhoto = await loadImage('/assets/photos/Rod-photo.png');
+        const photoWidth = 35;
+        const photoHeight = 35;
+        if (rodPhoto) {
+          pdf.addImage(rodPhoto, 'PNG', margin, y, photoWidth, photoHeight);
+        }
+        
+        // 3. Texto "TOURS PRIVADOS"
+        const textX = margin + photoWidth + 8;
+        const textWidth = pageWidth - textX - margin;
+        
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(12);
+        pdf.setTextColor(192, 90, 42);
+        pdf.text('TOURS PRIVADOS', textX, y + 5);
+        
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.setTextColor(28, 26, 24);
+        const textLines = pdf.splitTextToSize(
+          'Todos os tours estão disponíveis como experiências privadas. Ideal para famílias, casais, eventos corporativos ou celebrações especiais. Itinerários personalizados disponíveis mediante pedido.',
+          textWidth
+        );
+        pdf.text(textLines, textX, y + 12);
+        
+        // 4. Informações de contacto
+        const contactY = y + 12 + (textLines.length * 5) + 8;
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(8);
+        pdf.setTextColor(28, 26, 24);
+        pdf.text('Contacte-nos:', textX, contactY);
+        pdf.setFont('helvetica', 'normal');
+        pdf.text('📧 roddiewalker.tours@gmail.com', textX, contactY + 5);
+        pdf.text('📸 @roddiewalker.tours', textX, contactY + 10);
+        
+        // 5. QR Code
+        const qrCode = await loadQRCode('https://www.roddiewalker-tours.com');
+        if (qrCode) {
+          const qrSize = 28;
+          const qrX = pageWidth - margin - qrSize;
+          const qrY = pageHeight - margin - qrSize - 8;
+          pdf.addImage(qrCode, 'PNG', qrX, qrY, qrSize, qrSize);
+        }
+        
+        // 6. Rodapé com URL
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(7);
+        pdf.setTextColor(122, 110, 98);
+        pdf.text('www.roddiewalker-tours.com', margin, pageHeight - margin - 5);
+        
+        // Guardar PDF
         pdf.save('RoddieWalkerTours_Panfleto.pdf');
         
       } catch (error) {
@@ -550,7 +434,58 @@
       }
     }
     
-    // Adicionar evento ao botão
+    // Função auxiliar para carregar imagens
+    function loadImage(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            resolve(canvas.toDataURL('image/png'));
+          } catch (e) {
+            console.error('Erro ao converter imagem:', e);
+            resolve(null);
+          }
+        };
+        img.onerror = () => {
+          console.error('Erro ao carregar imagem:', src);
+          resolve(null);
+        };
+        img.src = src + '?t=' + Date.now(); // Adicionar timestamp para evitar cache
+      });
+    }
+    
+    // Função auxiliar para carregar QR Code
+    function loadQRCode(url) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.crossOrigin = 'Anonymous';
+        img.onload = () => {
+          try {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            resolve(canvas.toDataURL('image/png'));
+          } catch (e) {
+            console.error('Erro ao converter QR Code:', e);
+            resolve(null);
+          }
+        };
+        img.onerror = () => {
+          console.error('Erro ao carregar QR Code');
+          resolve(null);
+        };
+        img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}`;
+      });
+    }
+    
     const flyerBtn = document.getElementById('generate-flyer');
     if (flyerBtn) {
       flyerBtn.addEventListener('click', generateFlyer);
