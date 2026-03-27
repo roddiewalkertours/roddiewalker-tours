@@ -322,7 +322,7 @@
       });
     }
 
-    // Function to generate flyer PDF - final simplified version
+    // Function to generate flyer PDF - Safari Fix Version
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -332,10 +332,13 @@
       try {
         const { jsPDF } = window.jspdf;
         
+        // Initialize A5 PDF with compression and Safari-friendly settings
         const pdf = new jsPDF({
           orientation: 'portrait',
           unit: 'mm',
-          format: 'a5'
+          format: 'a5',
+          putOnlyUsedFonts: true,
+          compress: true
         });
         
         const pageWidth = pdf.internal.pageSize.getWidth();
@@ -387,6 +390,7 @@
         // 5. QR Code
         const qrCodeData = await new Promise((resolve) => {
           const img = new Image();
+          img.crossOrigin = "Anonymous";
           img.onload = () => {
             const canvas = document.createElement('canvas');
             canvas.width = img.width;
@@ -395,9 +399,7 @@
             ctx.drawImage(img, 0, 0);
             resolve(canvas.toDataURL('image/png'));
           };
-          img.onerror = () => {
-            resolve(null);
-          };
+          img.onerror = () => resolve(null);
           img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://www.roddiewalker-tours.com')}&t=${Date.now()}`;
         });
         
@@ -408,11 +410,11 @@
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
         }
         
-        // 6. Footer
+        // 6. Footer - Slightly higher offset to prevent Safari blank page
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(7);
         pdf.setTextColor(122, 110, 98);
-        pdf.text('www.roddiewalker-tours.com', margin, pageHeight - margin - 5);
+        pdf.text('www.roddiewalker-tours.com', margin, pageHeight - margin - 8);
         
         pdf.save('RoddieWalkerTours_Flyer.pdf');
         
