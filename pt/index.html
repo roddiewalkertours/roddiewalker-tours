@@ -7,6 +7,7 @@
   <meta name="description" content="Tours a pé autênticos em Lisboa com um guia local. Explore Alfama, Belém e os segredos da cidade." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css" />
 </head>
 <body>
 
@@ -285,6 +286,7 @@
             <li><a href="/pt/tours.html">Percursos</a></li>
             <li><a href="/pt/about.html">Sobre</a></li>
             <li><a href="/pt/contact.html">Contacto</a></li>
+            <li><a href="/pt/privacy.html">Política de Cookies</a></li>
           </ul>
         </div>
         <div>
@@ -300,8 +302,20 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
+    // Initialize cookie consent
+    const cookieConsent = new CookieConsentManager({
+      analyticsScripts: [
+        {
+          type: 'gtag',
+          id: 'G-XXXXXXXXXX' // Replace with your Google Analytics ID
+        }
+      ]
+    });
+    window.cookieConsent = cookieConsent;
+
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile');
     if (toggle && mobileMenu) {
