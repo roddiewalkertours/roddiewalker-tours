@@ -350,7 +350,6 @@
       try {
         const { jsPDF } = window.jspdf;
         
-        // Criar PDF em formato A4
         const pdf = new jsPDF({
           orientation: 'portrait',
           unit: 'mm',
@@ -366,20 +365,26 @@
         
         let yPos = marginTop;
         
-        // 1. Logo e título "Roddie Walker Tours"
-        try {
-          const logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
-          if (logoData) {
-            pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12);
-          }
-        } catch (e) {
-          console.log('Logo não carregado');
-        }
+        // 1. Título centralizado: "Roddie Walker Tours"
+        const titleText = 'Roddie Walker Tours';
+        const titleWidth = pdf.getTextWidth(titleText);
+        const titleX = (pageWidth - titleWidth) / 2;
         
+        // Desenhar "Roddie" em laranja
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(22);
+        pdf.setTextColor(192, 90, 42); // laranja
+        pdf.text('Roddie', titleX, yPos + 9);
+        
+        // Desenhar " Walker" em azul
+        const roddieWidth = pdf.getTextWidth('Roddie');
+        pdf.setTextColor(42, 92, 138); // azul
+        pdf.text(' Walker', titleX + roddieWidth, yPos + 9);
+        
+        // Desenhar " Tours" em laranja
+        const walkerWidth = pdf.getTextWidth(' Walker');
         pdf.setTextColor(192, 90, 42);
-        pdf.text('Roddie Walker Tours', marginLeft + 16, yPos + 9);
+        pdf.text(' Tours', titleX + roddieWidth + walkerWidth, yPos + 9);
         
         yPos += 18;
         
@@ -389,30 +394,59 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 2. Foto do Rodrigo (com proporção correta)
+        // 2. Layout: foto do Rodrigo à esquerda, mosaico de 4 fotos à direita
+        const photoSectionWidth = (pageWidth - marginLeft - marginRight) / 2;
+        const photoSectionHeight = 80;
+        
+        // 2a. Foto do Rodrigo (esquerda)
+        let rodPhotoHeight = 0;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
           if (rodPhotoData) {
-            // Manter proporção: largura 55mm, altura ajustada automaticamente
-            const photoWidth = 55;
+            const photoWidth = photoSectionWidth - 5;
             const img = new Image();
             img.src = rodPhotoData;
             await new Promise((resolve) => {
               img.onload = () => resolve();
               if (img.complete) resolve();
             });
-            const photoHeight = (img.height / img.width) * photoWidth;
-            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, photoHeight);
-            
-            // Ajustar yPos após a foto
-            yPos += photoHeight + 8;
-          } else {
-            yPos += 55;
+            rodPhotoHeight = (img.height / img.width) * photoWidth;
+            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, rodPhotoHeight);
           }
         } catch (e) {
           console.log('Foto não carregada');
-          yPos += 55;
+          rodPhotoHeight = photoSectionHeight;
         }
+        
+        // 2b. Mosaico de 4 fotos à direita
+        const mosaicImages = ['food.jpg', 'lisbon-1.jpg', 'literaria.jpg', 'alfama.jpg'];
+        const mosaicX = marginLeft + photoSectionWidth + 5;
+        const mosaicWidth = photoSectionWidth - 5;
+        const cellWidth = (mosaicWidth - 5) / 2;
+        const cellHeight = (photoSectionHeight - 5) / 2;
+        
+        let imgIndex = 0;
+        for (let row = 0; row < 2; row++) {
+          for (let col = 0; col < 2; col++) {
+            if (imgIndex < mosaicImages.length) {
+              const imgSrc = mosaicImages[imgIndex];
+              try {
+                const imgData = await loadImageAsBase64('/assets/photos/' + imgSrc);
+                if (imgData) {
+                  const imgX = mosaicX + col * (cellWidth + 5);
+                  const imgY = yPos + row * (cellHeight + 5);
+                  pdf.addImage(imgData, 'PNG', imgX, imgY, cellWidth, cellHeight);
+                }
+              } catch (e) {
+                console.log('Imagem não carregada:', imgSrc);
+              }
+            }
+            imgIndex++;
+          }
+        }
+        
+        // Ajustar yPos após a secção de fotos
+        yPos += Math.max(rodPhotoHeight, photoSectionHeight) + 12;
         
         // 3. Texto principal
         pdf.setFont('helvetica', 'bold');
