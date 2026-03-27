@@ -365,23 +365,31 @@
         
         let yPos = marginTop;
         
-        // 1. Título centralizado: "Roddie Walker Tours"
+        // 1. Logo à esquerda
+        let logoData = null;
+        try {
+          logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
+          if (logoData) {
+            pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12);
+          }
+        } catch (e) {
+          console.log('Logo não carregado');
+        }
+        
+        // 2. Título centralizado: "Roddie Walker Tours"
         const titleText = 'Roddie Walker Tours';
         const titleWidth = pdf.getTextWidth(titleText);
         const titleX = (pageWidth - titleWidth) / 2;
         
-        // Desenhar "Roddie" em laranja
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(22);
-        pdf.setTextColor(192, 90, 42); // laranja
+        pdf.setTextColor(192, 90, 42);
         pdf.text('Roddie', titleX, yPos + 9);
         
-        // Desenhar " Walker" em azul
         const roddieWidth = pdf.getTextWidth('Roddie');
-        pdf.setTextColor(42, 92, 138); // azul
+        pdf.setTextColor(42, 92, 138);
         pdf.text(' Walker', titleX + roddieWidth, yPos + 9);
         
-        // Desenhar " Tours" em laranja
         const walkerWidth = pdf.getTextWidth(' Walker');
         pdf.setTextColor(192, 90, 42);
         pdf.text(' Tours', titleX + roddieWidth + walkerWidth, yPos + 9);
@@ -394,36 +402,40 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 2. Layout: foto do Rodrigo à esquerda, mosaico de 4 fotos à direita
+        // 3. Layout: foto do Rodrigo à esquerda, mosaico de 4 fotos à direita
         const photoSectionWidth = (pageWidth - marginLeft - marginRight) / 2;
-        const photoSectionHeight = 80;
+        const photoSectionHeight = 85;
         
-        // 2a. Foto do Rodrigo (esquerda)
+        // 3a. Foto do Rodrigo (esquerda)
         let rodPhotoHeight = 0;
+        let rodPhotoWidth = photoSectionWidth - 5;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
           if (rodPhotoData) {
-            const photoWidth = photoSectionWidth - 5;
             const img = new Image();
             img.src = rodPhotoData;
             await new Promise((resolve) => {
               img.onload = () => resolve();
               if (img.complete) resolve();
             });
-            rodPhotoHeight = (img.height / img.width) * photoWidth;
-            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, rodPhotoHeight);
+            rodPhotoHeight = (img.height / img.width) * rodPhotoWidth;
+            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, rodPhotoWidth, rodPhotoHeight);
           }
         } catch (e) {
           console.log('Foto não carregada');
           rodPhotoHeight = photoSectionHeight;
         }
         
-        // 2b. Mosaico de 4 fotos à direita
+        // 3b. Mosaico de 4 fotos à direita - ajustado para baixo para alinhar com a foto
         const mosaicImages = ['food.jpg', 'lisbon-1.jpg', 'literaria.jpg', 'alfama.jpg'];
         const mosaicX = marginLeft + photoSectionWidth + 5;
         const mosaicWidth = photoSectionWidth - 5;
         const cellWidth = (mosaicWidth - 5) / 2;
         const cellHeight = (photoSectionHeight - 5) / 2;
+        
+        // Calcular o offset vertical para alinhar o mosaico com a foto do Rodrigo
+        const photoTopOffset = 0; // Começa no mesmo yPos da foto
+        const mosaicStartY = yPos + photoTopOffset;
         
         let imgIndex = 0;
         for (let row = 0; row < 2; row++) {
@@ -434,7 +446,7 @@
                 const imgData = await loadImageAsBase64('/assets/photos/' + imgSrc);
                 if (imgData) {
                   const imgX = mosaicX + col * (cellWidth + 5);
-                  const imgY = yPos + row * (cellHeight + 5);
+                  const imgY = mosaicStartY + row * (cellHeight + 5);
                   pdf.addImage(imgData, 'PNG', imgX, imgY, cellWidth, cellHeight);
                 }
               } catch (e) {
@@ -445,10 +457,10 @@
           }
         }
         
-        // Ajustar yPos após a secção de fotos
+        // Ajustar yPos após a secção de fotos (usar a altura máxima)
         yPos += Math.max(rodPhotoHeight, photoSectionHeight) + 12;
         
-        // 3. Texto principal
+        // 4. Texto principal
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(14);
         pdf.setTextColor(192, 90, 42);
@@ -464,7 +476,7 @@
         pdf.text(textLines, marginLeft, yPos);
         yPos += (textLines.length * 6) + 12;
         
-        // 4. Informações de contacto (sem emojis)
+        // 5. Informações de contacto
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(10);
         pdf.setTextColor(28, 26, 24);
@@ -477,7 +489,7 @@
         pdf.text('Instagram: @roddiewalker.tours', marginLeft, yPos);
         yPos += 12;
         
-        // 5. QR Code
+        // 6. QR Code
         const qrCodeData = await new Promise((resolve) => {
           const img = new Image();
           img.crossOrigin = 'Anonymous';
@@ -500,7 +512,7 @@
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
         }
         
-        // 6. Rodapé com URL
+        // 7. Rodapé com URL
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(8);
         pdf.setTextColor(122, 110, 98);
