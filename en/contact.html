@@ -401,13 +401,11 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 3. Layout: Rodrigo photo on left, 4-photo mosaic on right
-        const photoSectionWidth = (pageWidth - marginLeft - marginRight) / 2;
-        const photoSectionHeight = 85;
+        // 3. Layout: Rodrigo photo on left, 1 photo on right (balanced)
+        const photoWidth = (pageWidth - marginLeft - marginRight - 15) / 2; // 15mm spacing between photos
         
         // 3a. Rodrigo photo
         let rodPhotoHeight = 0;
-        let rodPhotoWidth = photoSectionWidth - 5;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
           if (rodPhotoData) {
@@ -417,45 +415,26 @@
               img.onload = () => resolve();
               if (img.complete) resolve();
             });
-            rodPhotoHeight = (img.height / img.width) * rodPhotoWidth;
-            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, rodPhotoWidth, rodPhotoHeight);
+            rodPhotoHeight = (img.height / img.width) * photoWidth;
+            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, rodPhotoHeight);
           }
         } catch (e) {
           console.log('Photo not loaded');
-          rodPhotoHeight = photoSectionHeight;
+          rodPhotoHeight = 85;
         }
         
-        // 3b. Mosaic of 4 photos - adjusted downward to align with photo
-        const mosaicImages = ['food.jpg', 'lisbon-1.jpg', 'literaria.jpg', 'alfama.jpg'];
-        const mosaicX = marginLeft + photoSectionWidth + 5;
-        const mosaicWidth = photoSectionWidth - 5;
-        const cellWidth = (mosaicWidth - 5) / 2;
-        const cellHeight = (photoSectionHeight - 5) / 2;
-        
-        const photoTopOffset = 0;
-        const mosaicStartY = yPos + photoTopOffset;
-        
-        let imgIndex = 0;
-        for (let row = 0; row < 2; row++) {
-          for (let col = 0; col < 2; col++) {
-            if (imgIndex < mosaicImages.length) {
-              const imgSrc = mosaicImages[imgIndex];
-              try {
-                const imgData = await loadImageAsBase64('/assets/photos/' + imgSrc);
-                if (imgData) {
-                  const imgX = mosaicX + col * (cellWidth + 5);
-                  const imgY = mosaicStartY + row * (cellHeight + 5);
-                  pdf.addImage(imgData, 'PNG', imgX, imgY, cellWidth, cellHeight);
-                }
-              } catch (e) {
-                console.log('Image not loaded:', imgSrc);
-              }
-            }
-            imgIndex++;
+        // 3b. Right photo (alfama.jpg)
+        try {
+          const rightPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
+          if (rightPhotoData) {
+            const rightPhotoX = marginLeft + photoWidth + 15;
+            pdf.addImage(rightPhotoData, 'PNG', rightPhotoX, yPos, photoWidth, rodPhotoHeight);
           }
+        } catch (e) {
+          console.log('Right photo not loaded');
         }
         
-        yPos += Math.max(rodPhotoHeight, photoSectionHeight) + 12;
+        yPos += rodPhotoHeight + 12;
         
         // 4. Main text
         pdf.setFont('helvetica', 'bold');
