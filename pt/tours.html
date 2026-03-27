@@ -11,6 +11,7 @@
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="canonical" href="https://roddiewalker.github.io/roddiewalker-tours/pt/tours.html">
   <link rel="stylesheet" href="/assets/css/styles.css">
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css" />
 </head>
 <body>
 
@@ -68,15 +69,12 @@
   <main>
     <section class="section">
       <div class="container">
-
         <div class="filter-bar" id="filter-bar" aria-label="Filtrar percursos"></div>
-
         <div id="tours-container">
           <p style="color:var(--stone);font-family:var(--ff-ui);text-align:center;padding:48px 0">
             A carregar percursos…
           </p>
         </div>
-
       </div>
     </section>
   </main>
@@ -115,6 +113,7 @@
             <li><a href="/pt/index.html">Início</a></li>
             <li><a href="/pt/about.html">Sobre o guia</a></li>
             <li><a href="/pt/contact.html">Contacto</a></li>
+            <li><a href="/pt/privacy.html">Política de Cookies</a></li>
             <li><a href="/en/tours.html">English version</a></li>
           </ul>
         </div>
@@ -125,8 +124,14 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
+    const cookieConsent = new CookieConsentManager({
+      analyticsScripts: [{ type: 'gtag', id: 'G-XXXXXXXXXX' }]
+    });
+    window.cookieConsent = cookieConsent;
+
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile');
     if (toggle && mobileMenu) {
