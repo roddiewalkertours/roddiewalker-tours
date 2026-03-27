@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact & Booking — Roddie Walker Tours Lisbon</title>
+  <title>Contact &amp; Booking — Roddie Walker Tours Lisbon</title>
+  <meta name="description" content="Book a walking tour in Lisbon or get in touch with Rodrigo. Email, Instagram, and booking form available." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -16,19 +17,312 @@
         <img src="/assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
         <span class="nav__logo-text">Roddie<span>Walker</span></span>
       </a>
+
       <ul class="nav__links">
+        <li><a href="/en/index.html">Home</a></li>
+        <li><a href="/en/tours.html">Tours</a></li>
+        <li><a href="/en/about.html">About</a></li>
         <li><a href="/en/contact.html" class="active">Contact</a></li>
       </ul>
+
+      <div class="nav__lang">
+        <a href="/en/contact.html" class="active">EN</a>
+        <a href="/pt/contact.html">PT</a>
+      </div>
+
+      <button class="nav__toggle" id="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </nav>
+
+    <div id="nav-mobile" class="nav__mobile container">
+      <ul class="nav__links">
+        <li><a href="/en/index.html">Home</a></li>
+        <li><a href="/en/tours.html">Tours</a></li>
+        <li><a href="/en/about.html">About</a></li>
+        <li><a href="/en/contact.html">Contact</a></li>
+      </ul>
+      <div class="nav__lang">
+        <a href="/en/contact.html" class="active">EN</a>
+        <a href="/pt/contact.html">PT</a>
+      </div>
+    </div>
   </header>
 
-  <section class="section">
-    <div class="container">
-      <button id="generate-flyer" class="btn btn--outline-dark">📄 Take a flyer with you</button>
+  <section class="page-hero">
+    <div class="container page-hero__content">
+      <p class="page-hero__eyebrow">Get in Touch</p>
+      <h1 class="page-hero__title">Book a Tour</h1>
+      <p class="page-hero__subtitle">Reserve your spot, ask a question, or request a private experience. Rodrigo will get back to you within 24 hours.</p>
     </div>
   </section>
 
+  <section class="section">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;">
+
+        <div>
+          <span class="eyebrow">Contact</span>
+          <h2 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2rem);margin:16px 0 8px;">How to Reach Us</h2>
+          <p style="color:var(--stone);margin-bottom:32px;">
+            The quickest way to book is via the form, email, or Instagram DM. For private group enquiries, please include your group size and preferred dates.
+          </p>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">✉️</div>
+            <div class="contact-detail">
+              <h4>Email</h4>
+              <a href="mailto:roddiewalker.tours@gmail.com">roddiewalker.tours@gmail.com</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">📸</div>
+            <div class="contact-detail">
+              <h4>Instagram</h4>
+              <a href="https://instagram.com/roddiewalker.tours" target="_blank" rel="noopener">@roddiewalker.tours</a>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">📍</div>
+            <div class="contact-detail">
+              <h4>Location</h4>
+              <p>Lisbon, Portugal</p>
+            </div>
+          </div>
+
+          <div class="contact-info-card">
+            <div class="contact-icon">⏱️</div>
+            <div class="contact-detail">
+              <h4>Response Time</h4>
+              <p>Within 24 hours</p>
+            </div>
+          </div>
+
+          <div style="margin-top:32px;padding:28px;background:var(--cream);border-radius:var(--radius-lg);border-left:4px solid var(--azulejo);">
+            <h3 style="font-family:var(--ff-ui);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--azulejo);margin-bottom:12px;">Private Tours</h3>
+            <p style="font-size:0.95rem;color:var(--stone);margin:0;">All tours are available as private experiences. Ideal for families, couples, corporate events, or special celebrations. Custom itineraries available on request.</p>
+          </div>
+
+          <div style="margin-top:24px;padding:28px;background:var(--cream);border-radius:var(--radius-lg);border-left:4px solid var(--terracotta);">
+            <h3 style="font-family:var(--ff-ui);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;">Coming Soon</h3>
+            <p style="font-size:0.95rem;color:var(--stone);margin:0;">Calendly integration, WhatsApp Business, and an online booking system are being set up. In the meantime, the form or email works perfectly.</p>
+          </div>
+        </div>
+
+        <div>
+          <span class="eyebrow">Booking Form</span>
+          <h2 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2rem);margin:16px 0 24px;">Send a Message</h2>
+          
+          <form class="contact-form" id="booking-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name *</label>
+                <input type="text" id="fname" name="First Name" required placeholder="Your first name" />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name *</label>
+                <input type="text" id="lname" name="Last Name" required placeholder="Your last name" />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="Customer Email" required placeholder="you@email.com" />
+            </div>
+
+            <div class="form-group">
+              <label for="tour">Tour of Interest</label>
+              <select id="tour" name="Tour of Interest">
+                <option value="">— Select a tour —</option>
+                <option value="Alfama Hidden Tour — €35">Alfama Hidden Tour — €35</option>
+                <option value="Belém Monumental Tour — €35">Belém Monumental Tour — €35</option>
+                <option value="Lisbon Historical Tour — €30">Lisbon Historical Tour — €30</option>
+                <option value="Lisbon Literary Tour — €30">Lisbon Literary Tour — €30</option>
+                <option value="Alternative & Street Art Tour — €30">Alternative & Street Art Tour — €30</option>
+                <option value="Food & Culture Tour — €55">Food & Culture Tour — €55</option>
+                <option value="Private / Custom Tour">Private / Custom Tour</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="date">Preferred Date</label>
+                <input type="date" id="date" name="Preferred Date" />
+              </div>
+              <div class="form-group">
+                <label for="guests">Number of Guests</label>
+                <select id="guests" name="Number of Guests">
+                  <option value="1">1</option>
+                  <option value="2" selected>2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message / Questions</label>
+              <textarea id="message" name="Message" rows="5" placeholder="Any questions, special requests, or information about your group…"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Send Booking Request</button>
+          </form>
+          <p style="font-family:var(--ff-ui);font-size:0.75rem;color:var(--stone);margin-top:16px;text-align:center;">
+            By submitting this form, your email client will open. Simply click send.
+          </p>
+          
+          <button id="generate-flyer" class="btn btn--outline-dark" style="width:100%;margin-top:20px;justify-content:center;">
+            📄 Take a flyer with you
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-cream">
+    <div class="container" style="max-width:800px;">
+      <div class="section-header">
+        <span class="eyebrow">FAQ</span>
+        <h2 class="section-title">Common Questions</h2>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0;">
+        <details style="padding:1.5rem 0;border-bottom:1px solid rgba(74,127,181,0.15);">
+          <summary style="font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--charcoal);list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+            What should I wear and bring?
+            <span style="color:var(--azulejo);font-size:1.3rem;">+</span>
+          </summary>
+          <p style="margin-top:1rem;color:var(--stone);">Comfortable walking shoes are essential — Lisbon has cobblestones and hills. Bring water, sunscreen in summer, and a light layer for evenings. Everything else is taken care of.</p>
+        </details>
+        <details style="padding:1.5rem 0;border-bottom:1px solid rgba(74,127,181,0.15);">
+          <summary style="font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--charcoal);list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+            What is your cancellation policy?
+            <span style="color:var(--azulejo);font-size:1.3rem;">+</span>
+          </summary>
+          <p style="margin-top:1rem;color:var(--stone);">Free cancellation up to 48 hours before the tour. Cancellations within 48 hours may incur a 50% fee. In case of bad weather affecting the experience, tours can be rescheduled at no charge.</p>
+        </details>
+        <details style="padding:1.5rem 0;border-bottom:1px solid rgba(74,127,181,0.15);">
+          <summary style="font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--charcoal);list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+            Are tours suitable for children?
+            <span style="color:var(--azulejo);font-size:1.3rem;">+</span>
+          </summary>
+          <p style="margin-top:1rem;color:var(--stone);">Yes! Rodrigo adapts his storytelling to suit the group. Children under 12 are welcome on family tours at a reduced rate. Contact us to discuss the best option.</p>
+        </details>
+        <details style="padding:1.5rem 0;">
+          <summary style="font-family:var(--ff-display);font-size:1.1rem;font-weight:600;color:var(--charcoal);list-style:none;display:flex;justify-content:space-between;align-items:center;cursor:pointer;">
+            Where do tours start?
+            <span style="color:var(--azulejo);font-size:1.3rem;">+</span>
+          </summary>
+          <p style="margin-top:1rem;color:var(--stone);">Each tour has its own meeting point, confirmed in your booking confirmation. Most start in accessible, central locations near public transport.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-logo">
+            <img src="/assets/logo/favicon_512.png" alt="Roddie Walker Tours Logo" />
+            <span>Roddie Walker Tours</span>
+          </div>
+          <p class="footer__brand-desc">Authentic walking tours in Lisbon led by a passionate local guide. Discover the city one story at a time.</p>
+          <div class="social-links">
+            <a href="https://instagram.com/roddiewalker.tours" target="_blank" class="social-link" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.336 3.608 1.311.975.975 1.249 2.242 1.311 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.336 2.633-1.311 3.608-.975.975-2.242 1.249-3.608 1.311-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.336-3.608-1.311-.975-.975-1.249-2.242-1.311-3.608-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.062-1.366.336-2.633 1.311-3.608.975-.975 2.242-1.249 3.608-1.311 1.266-.058 1.646-.07 4.85-.07zM12 0C8.741 0 8.332.014 7.052.072 5.73.13 4.617.383 3.66 1.34 2.703 2.297 2.45 3.41 2.392 4.732 2.334 6.012 2.32 6.421 2.32 9.68s.014 3.668.072 4.948c.058 1.322.311 2.435 1.268 3.392.957.957 2.07 1.21 3.392 1.268 1.28.058 1.689.072 4.948.072s3.668-.014 4.948-.072c1.322-.058 2.435-.311 3.392-1.268.957-.957 1.21-2.07 1.268-3.392.058-1.28.072-1.689.072-4.948s-.014-3.668-.072-4.948c-.058-1.322-.311-2.435-1.268-3.392-.957-.957-2.07-1.21-3.392-1.268C15.668.014 15.259 0 12 0z"/>
+                <path d="M12 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+                <circle cx="18.406" cy="5.594" r="1.44"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div>
+          <h4>Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="/en/index.html">Home</a></li>
+            <li><a href="/en/tours.html">Tours</a></li>
+            <li><a href="/en/about.html">About</a></li>
+            <li><a href="/en/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Language</h4>
+          <ul class="footer-links">
+            <li><a href="/pt/contact.html">Ver em Português</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Roddie Walker Tours · Lisbon, Portugal</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/scripts.js"></script>
   <script>
+    const toggle = document.getElementById('nav-toggle');
+    const mobileMenu = document.getElementById('nav-mobile');
+    if (toggle && mobileMenu) {
+      toggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', mobileMenu.classList.contains('open'));
+      });
+    }
+
+    const form = document.getElementById('booking-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const firstName = document.getElementById('fname').value;
+        const lastName = document.getElementById('lname').value;
+        const email = document.getElementById('email').value;
+        const tour = document.getElementById('tour').value;
+        const date = document.getElementById('date').value;
+        const guests = document.getElementById('guests').value;
+        const message = document.getElementById('message').value;
+        
+        if (!firstName || !lastName || !email) {
+          alert('Please fill in the required fields: First Name, Last Name, and Email.');
+          return;
+        }
+        
+        const subject = `New Booking: ${tour || 'Inquiry'} - ${firstName} ${lastName}`;
+        
+        let body = '';
+        body += `New booking request from Roddie Walker Tours website\n`;
+        body += `=========================================\n\n`;
+        body += `CUSTOMER DETAILS\n`;
+        body += `----------------\n`;
+        body += `First Name: ${firstName}\n`;
+        body += `Last Name: ${lastName}\n`;
+        body += `Email: ${email}\n\n`;
+        body += `BOOKING DETAILS\n`;
+        body += `---------------\n`;
+        body += `Tour of Interest: ${tour || 'Not specified'}\n`;
+        body += `Preferred Date: ${date || 'Not specified'}\n`;
+        body += `Number of Guests: ${guests}\n\n`;
+        body += `MESSAGE\n`;
+        body += `-------\n`;
+        body += `${message || 'No additional message.'}\n\n`;
+        body += `---\n`;
+        body += `This message was sent via the contact form on the Roddie Walker Tours website.`;
+        
+        const mailtoLink = `mailto:roddiewalker.tours@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        
+        window.location.href = mailtoLink;
+      });
+    }
+
+    // Function to generate flyer PDF - with reduced margins
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -37,42 +331,121 @@
       
       try {
         const { jsPDF } = window.jspdf;
-        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a5' });
         
-        const loadImage = (src) => new Promise((resolve) => {
-          const img = new Image();
-          img.crossOrigin = "Anonymous"; // CORREÇÃO PARA O BLOQUEIO NO SAFARI
-          img.onload = () => resolve(img);
-          img.onerror = () => resolve(null); 
-          img.src = src;
+        const pdf = new jsPDF({
+          orientation: 'portrait',
+          unit: 'mm',
+          format: 'a5'
         });
-
-        // Título e Conteúdo
+        
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
+        
+        // Reduced margins: top 6mm, bottom 6mm, left 10mm, right 10mm
+        const marginTop = 6;
+        const marginBottom = 6;
+        const marginLeft = 10;
+        const marginRight = 10;
+        
+        let yPos = marginTop;
+        
+        // 1. Title
         pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(20);
         pdf.setTextColor(192, 90, 42);
-        pdf.text('Roddie Walker Tours', 12, 20);
-
-        // QR Code
-        const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://www.roddiewalker-tours.com')}`;
-        const qrCode = await loadImage(qrUrl);
+        pdf.text('Roddie Walker Tours', marginLeft, yPos + 6);
         
-        if (qrCode) {
-          pdf.addImage(qrCode, 'PNG', 100, 160, 35, 35);
-        }
-
+        yPos += 12;
+        
+        pdf.setDrawColor(192, 90, 42);
+        pdf.setLineWidth(0.5);
+        pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
+        yPos += 10;
+        
+        // 2. Section title
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(14);
+        pdf.setTextColor(192, 90, 42);
+        pdf.text('PRIVATE TOURS', marginLeft, yPos);
+        yPos += 8;
+        
+        // 3. Main text
+        pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(10);
-        pdf.setTextColor(0, 0, 0);
-        pdf.text('Book your authentic Lisbon experience.', 12, 35);
+        pdf.setTextColor(28, 26, 24);
+        const mainText = 'All tours are available as private experiences. Ideal for families, couples, corporate events, or special celebrations. Custom itineraries available on request.';
+        const textWidth = pageWidth - marginLeft - marginRight;
+        const textLines = pdf.splitTextToSize(mainText, textWidth);
+        pdf.text(textLines, marginLeft, yPos);
+        yPos += (textLines.length * 5) + 8;
         
-        pdf.save('RoddieWalkerTours_EN.pdf');
-      } catch (e) {
-        console.error(e);
+        // 4. Contacts
+        pdf.setFont('helvetica', 'bold');
+        pdf.setFontSize(9);
+        pdf.setTextColor(28, 26, 24);
+        pdf.text('CONTACTS:', marginLeft, yPos);
+        yPos += 6;
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(9);
+        pdf.text('Email: roddiewalker.tours@gmail.com', marginLeft, yPos);
+        yPos += 5;
+        pdf.text('Instagram: @roddiewalker.tours', marginLeft, yPos);
+        
+        // 5. QR Code
+        const qrCodeData = await new Promise((resolve) => {
+          const img = new Image();
+          img.onload = () => {
+            const canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            resolve(canvas.toDataURL('image/png'));
+          };
+          img.onerror = () => {
+            resolve(null);
+          };
+          img.src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://www.roddiewalker-tours.com')}&t=${Date.now()}`;
+        });
+        
+        if (qrCodeData) {
+          const qrSize = 32;
+          const qrX = pageWidth - marginRight - qrSize;
+          const qrY = pageHeight - marginBottom - qrSize - 5;
+          pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
+        }
+        
+        // 6. Footer
+        pdf.setFont('helvetica', 'normal');
+        pdf.setFontSize(7);
+        pdf.setTextColor(122, 110, 98);
+        pdf.text('www.roddiewalker-tours.com', marginLeft, pageHeight - marginBottom - 3);
+        
+        pdf.save('RoddieWalkerTours_Flyer.pdf');
+        
+      } catch (error) {
+        console.error('Error generating flyer:', error);
+        alert('An error occurred while generating the flyer. Please try again.');
       } finally {
         button.innerHTML = originalText;
         button.disabled = false;
       }
     }
-    document.getElementById('generate-flyer').addEventListener('click', generateFlyer);
+    
+    const flyerBtn = document.getElementById('generate-flyer');
+    if (flyerBtn) {
+      flyerBtn.addEventListener('click', generateFlyer);
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>
