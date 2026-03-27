@@ -7,6 +7,7 @@
   <meta name="description" content="Meet Rodrigo, your local guide in Lisbon. Learn about his background, philosophy, and passion for storytelling through walking tours." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css" />
 </head>
 <body>
 
@@ -171,6 +172,7 @@
             <li><a href="/en/tours.html">Tours</a></li>
             <li><a href="/en/about.html">About</a></li>
             <li><a href="/en/contact.html">Contact</a></li>
+            <li><a href="/en/privacy.html">Cookie Policy</a></li>
           </ul>
         </div>
         <div>
@@ -186,8 +188,14 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
+    const cookieConsent = new CookieConsentManager({
+      analyticsScripts: [{ type: 'gtag', id: 'G-XXXXXXXXXX' }]
+    });
+    window.cookieConsent = cookieConsent;
+
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile');
     if (toggle && mobileMenu) {
