@@ -7,6 +7,7 @@
   <meta name="description" content="Book a walking tour in Lisbon or get in touch with Rodrigo. Email, Instagram, and booking form available." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -251,6 +252,7 @@
             <li><a href="/en/tours.html">Tours</a></li>
             <li><a href="/en/about.html">About</a></li>
             <li><a href="/en/contact.html">Contact</a></li>
+            <li><a href="/en/privacy.html">Cookie Policy</a></li>
           </ul>
         </div>
         <div>
@@ -266,8 +268,14 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
+    const cookieConsent = new CookieConsentManager({
+      analyticsScripts: [{ type: 'gtag', id: 'G-XXXXXXXXXX' }]
+    });
+    window.cookieConsent = cookieConsent;
+
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile');
     if (toggle && mobileMenu) {
@@ -354,7 +362,7 @@
       });
     }
 
-    // Function to generate flyer PDF in A4 format
+    // Function to generate flyer PDF
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -370,8 +378,8 @@
           format: 'a4'
         });
         
-        const pageWidth = pdf.internal.pageSize.getWidth(); // 210mm
-        const pageHeight = pdf.internal.pageSize.getHeight(); // 297mm
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
         const marginLeft = 15;
         const marginRight = 15;
         const marginTop = 15;
@@ -390,7 +398,7 @@
           console.log('Logo not loaded');
         }
         
-        // 2. Centered title: "Roddie Walker Tours"
+        // 2. Centered title
         const titleText = 'Roddie Walker Tours';
         const titleWidth = pdf.getTextWidth(titleText);
         const titleX = (pageWidth - titleWidth) / 2;
@@ -415,10 +423,9 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 3. Layout: Rodrigo photo on left, vertical mosaic of 2 photos on right
-        const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2; // 15mm spacing
+        // 3. Layout: Rodrigo photo on left, vertical mosaic on right
+        const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2;
         
-        // 3a. Rodrigo photo
         let rodPhotoHeight = 0;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
@@ -432,13 +439,12 @@
           rodPhotoHeight = 85;
         }
         
-        // 3b. Vertical mosaic of 2 photos on right
+        // Vertical mosaic of 2 photos on right
         const rightPhotoX = marginLeft + leftPhotoWidth + 15;
         const rightPhotoWidth = leftPhotoWidth;
         const gapBetweenRightPhotos = 8;
         const eachPhotoHeight = (rodPhotoHeight - gapBetweenRightPhotos) / 2;
         
-        // Top photo: alfama.jpg
         try {
           const topPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
           if (topPhotoData) {
@@ -448,7 +454,6 @@
           console.log('alfama.jpg not loaded');
         }
         
-        // Bottom photo: literaria.jpg
         try {
           const bottomPhotoData = await loadImageAsBase64('/assets/photos/literaria.jpg');
           if (bottomPhotoData) {
