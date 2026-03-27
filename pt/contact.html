@@ -7,6 +7,7 @@
   <meta name="description" content="Reserve um tour a pé em Lisboa ou entre em contacto com o Rodrigo. Email, Instagram e formulário de reserva disponíveis." />
   <link rel="icon" type="image/png" href="/assets/logo/favicon_512.png" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
+  <link rel="stylesheet" href="/assets/css/cookie-consent.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
 <body>
@@ -251,6 +252,7 @@
             <li><a href="/pt/tours.html">Percursos</a></li>
             <li><a href="/pt/about.html">Sobre</a></li>
             <li><a href="/pt/contact.html">Contacto</a></li>
+            <li><a href="/pt/privacy.html">Política de Cookies</a></li>
           </ul>
         </div>
         <div>
@@ -266,8 +268,14 @@
     </div>
   </footer>
 
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
+    const cookieConsent = new CookieConsentManager({
+      analyticsScripts: [{ type: 'gtag', id: 'G-XXXXXXXXXX' }]
+    });
+    window.cookieConsent = cookieConsent;
+
     const toggle = document.getElementById('nav-toggle');
     const mobileMenu = document.getElementById('nav-mobile');
     if (toggle && mobileMenu) {
@@ -340,7 +348,7 @@
       });
     }
 
-    // Função para obter dimensões de uma imagem carregada
+    // Function to get image dimensions
     async function getImageDimensions(src) {
       return new Promise((resolve) => {
         const img = new Image();
@@ -354,7 +362,7 @@
       });
     }
 
-    // Função para gerar o panfleto PDF em formato A4
+    // Function to generate flyer PDF
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
@@ -370,8 +378,8 @@
           format: 'a4'
         });
         
-        const pageWidth = pdf.internal.pageSize.getWidth(); // 210mm
-        const pageHeight = pdf.internal.pageSize.getHeight(); // 297mm
+        const pageWidth = pdf.internal.pageSize.getWidth();
+        const pageHeight = pdf.internal.pageSize.getHeight();
         const marginLeft = 15;
         const marginRight = 15;
         const marginTop = 15;
@@ -379,7 +387,7 @@
         
         let yPos = marginTop;
         
-        // 1. Logo à esquerda
+        // 1. Logo on left
         let logoData = null;
         try {
           logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
@@ -387,10 +395,10 @@
             pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12);
           }
         } catch (e) {
-          console.log('Logo não carregado');
+          console.log('Logo not loaded');
         }
         
-        // 2. Título centralizado: "Roddie Walker Tours"
+        // 2. Centered title
         const titleText = 'Roddie Walker Tours';
         const titleWidth = pdf.getTextWidth(titleText);
         const titleX = (pageWidth - titleWidth) / 2;
@@ -410,16 +418,14 @@
         
         yPos += 18;
         
-        // Linha separadora
         pdf.setDrawColor(192, 90, 42);
         pdf.setLineWidth(0.5);
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 3. Layout: foto do Rodrigo à esquerda, mosaico vertical de 2 fotos à direita
-        const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2; // 15mm de espaçamento
+        // 3. Layout: Rodrigo photo on left, vertical mosaic on right
+        const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2;
         
-        // 3a. Foto do Rodrigo (esquerda)
         let rodPhotoHeight = 0;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
@@ -429,27 +435,25 @@
             pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, leftPhotoWidth, rodPhotoHeight);
           }
         } catch (e) {
-          console.log('Foto não carregada');
+          console.log('Photo not loaded');
           rodPhotoHeight = 85;
         }
         
-        // 3b. Mosaico vertical de 2 fotos à direita
+        // Vertical mosaic of 2 photos on right
         const rightPhotoX = marginLeft + leftPhotoWidth + 15;
         const rightPhotoWidth = leftPhotoWidth;
-        const gapBetweenRightPhotos = 8; // espaçamento entre as duas fotos da direita
+        const gapBetweenRightPhotos = 8;
         const eachPhotoHeight = (rodPhotoHeight - gapBetweenRightPhotos) / 2;
         
-        // Foto de cima: alfama.jpg
         try {
           const topPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
           if (topPhotoData) {
             pdf.addImage(topPhotoData, 'PNG', rightPhotoX, yPos, rightPhotoWidth, eachPhotoHeight);
           }
         } catch (e) {
-          console.log('Foto alfama não carregada');
+          console.log('alfama.jpg not loaded');
         }
         
-        // Foto de baixo: literaria.jpg
         try {
           const bottomPhotoData = await loadImageAsBase64('/assets/photos/literaria.jpg');
           if (bottomPhotoData) {
@@ -457,12 +461,12 @@
             pdf.addImage(bottomPhotoData, 'PNG', rightPhotoX, bottomY, rightPhotoWidth, eachPhotoHeight);
           }
         } catch (e) {
-          console.log('Foto literaria não carregada');
+          console.log('literaria.jpg not loaded');
         }
         
         yPos += rodPhotoHeight + 12;
         
-        // 4. Texto principal
+        // 4. Main text
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(14);
         pdf.setTextColor(192, 90, 42);
@@ -478,7 +482,7 @@
         pdf.text(textLines, marginLeft, yPos);
         yPos += (textLines.length * 6) + 12;
         
-        // 5. Informações de contacto
+        // 5. Contact information
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(10);
         pdf.setTextColor(28, 26, 24);
@@ -514,18 +518,17 @@
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
         }
         
-        // 7. Rodapé com URL
+        // 7. Footer
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(8);
         pdf.setTextColor(122, 110, 98);
         pdf.text('www.roddiewalker-tours.com', marginLeft, pageHeight - marginBottom - 5);
         
-        // Guardar PDF
         pdf.save('RoddieWalkerTours_Panfleto.pdf');
         
       } catch (error) {
-        console.error('Erro ao gerar panfleto:', error);
-        alert('Ocorreu um erro ao gerar o panfleto. Por favor, tente novamente.');
+        console.error('Error generating flyer:', error);
+        alert('An error occurred while generating the flyer. Please try again.');
       } finally {
         button.innerHTML = originalText;
         button.disabled = false;
