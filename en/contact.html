@@ -340,6 +340,20 @@
       });
     }
 
+    // Function to get image dimensions
+    async function getImageDimensions(src) {
+      return new Promise((resolve) => {
+        const img = new Image();
+        img.onload = () => {
+          resolve({ width: img.width, height: img.height });
+        };
+        img.onerror = () => {
+          resolve({ width: 1, height: 1 });
+        };
+        img.src = src;
+      });
+    }
+
     // Function to generate flyer PDF in A4 format
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
@@ -401,37 +415,48 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 3. Layout: Rodrigo photo on left, 1 photo on right (balanced)
-        const photoWidth = (pageWidth - marginLeft - marginRight - 15) / 2; // 15mm spacing between photos
+        // 3. Layout: Rodrigo photo on left, vertical mosaic of 2 photos on right
+        const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2; // 15mm spacing
         
         // 3a. Rodrigo photo
         let rodPhotoHeight = 0;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
           if (rodPhotoData) {
-            const img = new Image();
-            img.src = rodPhotoData;
-            await new Promise((resolve) => {
-              img.onload = () => resolve();
-              if (img.complete) resolve();
-            });
-            rodPhotoHeight = (img.height / img.width) * photoWidth;
-            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, rodPhotoHeight);
+            const rodDimensions = await getImageDimensions('/assets/photos/Rod-photo.png');
+            rodPhotoHeight = (rodDimensions.height / rodDimensions.width) * leftPhotoWidth;
+            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, leftPhotoWidth, rodPhotoHeight);
           }
         } catch (e) {
           console.log('Photo not loaded');
           rodPhotoHeight = 85;
         }
         
-        // 3b. Right photo (alfama.jpg)
+        // 3b. Vertical mosaic of 2 photos on right
+        const rightPhotoX = marginLeft + leftPhotoWidth + 15;
+        const rightPhotoWidth = leftPhotoWidth;
+        const gapBetweenRightPhotos = 8;
+        const eachPhotoHeight = (rodPhotoHeight - gapBetweenRightPhotos) / 2;
+        
+        // Top photo: alfama.jpg
         try {
-          const rightPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
-          if (rightPhotoData) {
-            const rightPhotoX = marginLeft + photoWidth + 15;
-            pdf.addImage(rightPhotoData, 'PNG', rightPhotoX, yPos, photoWidth, rodPhotoHeight);
+          const topPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
+          if (topPhotoData) {
+            pdf.addImage(topPhotoData, 'PNG', rightPhotoX, yPos, rightPhotoWidth, eachPhotoHeight);
           }
         } catch (e) {
-          console.log('Right photo not loaded');
+          console.log('alfama.jpg not loaded');
+        }
+        
+        // Bottom photo: literaria.jpg
+        try {
+          const bottomPhotoData = await loadImageAsBase64('/assets/photos/literaria.jpg');
+          if (bottomPhotoData) {
+            const bottomY = yPos + eachPhotoHeight + gapBetweenRightPhotos;
+            pdf.addImage(bottomPhotoData, 'PNG', rightPhotoX, bottomY, rightPhotoWidth, eachPhotoHeight);
+          }
+        } catch (e) {
+          console.log('literaria.jpg not loaded');
         }
         
         yPos += rodPhotoHeight + 12;
