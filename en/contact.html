@@ -365,7 +365,18 @@
         
         let yPos = marginTop;
         
-        // 1. Centered title: "Roddie Walker Tours"
+        // 1. Logo on left
+        let logoData = null;
+        try {
+          logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
+          if (logoData) {
+            pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12);
+          }
+        } catch (e) {
+          console.log('Logo not loaded');
+        }
+        
+        // 2. Centered title: "Roddie Walker Tours"
         const titleText = 'Roddie Walker Tours';
         const titleWidth = pdf.getTextWidth(titleText);
         const titleX = (pageWidth - titleWidth) / 2;
@@ -390,36 +401,39 @@
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
         
-        // 2. Layout: Rodrigo photo on left, 4-photo mosaic on right
+        // 3. Layout: Rodrigo photo on left, 4-photo mosaic on right
         const photoSectionWidth = (pageWidth - marginLeft - marginRight) / 2;
-        const photoSectionHeight = 80;
+        const photoSectionHeight = 85;
         
-        // 2a. Rodrigo photo
+        // 3a. Rodrigo photo
         let rodPhotoHeight = 0;
+        let rodPhotoWidth = photoSectionWidth - 5;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
           if (rodPhotoData) {
-            const photoWidth = photoSectionWidth - 5;
             const img = new Image();
             img.src = rodPhotoData;
             await new Promise((resolve) => {
               img.onload = () => resolve();
               if (img.complete) resolve();
             });
-            rodPhotoHeight = (img.height / img.width) * photoWidth;
-            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, photoWidth, rodPhotoHeight);
+            rodPhotoHeight = (img.height / img.width) * rodPhotoWidth;
+            pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, rodPhotoWidth, rodPhotoHeight);
           }
         } catch (e) {
           console.log('Photo not loaded');
           rodPhotoHeight = photoSectionHeight;
         }
         
-        // 2b. Mosaic of 4 photos
+        // 3b. Mosaic of 4 photos - adjusted downward to align with photo
         const mosaicImages = ['food.jpg', 'lisbon-1.jpg', 'literaria.jpg', 'alfama.jpg'];
         const mosaicX = marginLeft + photoSectionWidth + 5;
         const mosaicWidth = photoSectionWidth - 5;
         const cellWidth = (mosaicWidth - 5) / 2;
         const cellHeight = (photoSectionHeight - 5) / 2;
+        
+        const photoTopOffset = 0;
+        const mosaicStartY = yPos + photoTopOffset;
         
         let imgIndex = 0;
         for (let row = 0; row < 2; row++) {
@@ -430,7 +444,7 @@
                 const imgData = await loadImageAsBase64('/assets/photos/' + imgSrc);
                 if (imgData) {
                   const imgX = mosaicX + col * (cellWidth + 5);
-                  const imgY = yPos + row * (cellHeight + 5);
+                  const imgY = mosaicStartY + row * (cellHeight + 5);
                   pdf.addImage(imgData, 'PNG', imgX, imgY, cellWidth, cellHeight);
                 }
               } catch (e) {
@@ -443,7 +457,7 @@
         
         yPos += Math.max(rodPhotoHeight, photoSectionHeight) + 12;
         
-        // 3. Main text
+        // 4. Main text
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(14);
         pdf.setTextColor(192, 90, 42);
@@ -459,7 +473,7 @@
         pdf.text(textLines, marginLeft, yPos);
         yPos += (textLines.length * 6) + 12;
         
-        // 4. Contact information
+        // 5. Contact information
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(10);
         pdf.setTextColor(28, 26, 24);
@@ -472,7 +486,7 @@
         pdf.text('Instagram: @roddiewalker.tours', marginLeft, yPos);
         yPos += 12;
         
-        // 5. QR Code
+        // 6. QR Code
         const qrCodeData = await new Promise((resolve) => {
           const img = new Image();
           img.crossOrigin = 'Anonymous';
@@ -495,7 +509,7 @@
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
         }
         
-        // 6. Footer
+        // 7. Footer
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(8);
         pdf.setTextColor(122, 110, 98);
