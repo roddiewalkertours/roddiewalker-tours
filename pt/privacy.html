@@ -359,7 +359,8 @@
     window.cookieConsent = cookieConsent;
 
     // Update current year in footer
-    document.getElementById('current-year')?.textContent = new Date().getFullYear();
+    const yearSpan = document.getElementById('current-year');
+    if (yearSpan) yearSpan.textContent = new Date().getFullYear();
 
     // Display current cookie status
     function updateCookieStatus() {
@@ -373,10 +374,14 @@
           statusElement.textContent = '❌ Cookies de análise desativados';
           statusElement.style.color = '#EF4444';
         }
+      } else if (statusElement) {
+        // Fallback if cookieConsent not ready
+        statusElement.textContent = '⚠️ A carregar...';
       }
     }
 
-    updateCookieStatus();
+    // Update status on page load
+    setTimeout(updateCookieStatus, 100);
 
     // Update status when settings change
     const originalShowSettings = cookieConsent.showSettings.bind(cookieConsent);
@@ -385,12 +390,11 @@
       setTimeout(() => {
         const settingsPanel = document.getElementById('cookie-settings-panel');
         if (settingsPanel) {
-          settingsPanel.addEventListener('click', (e) => {
-            if (e.target.classList.contains('cookie-settings-overlay') || 
-                (e.target.textContent && e.target.textContent.includes('Guardar'))) {
-              setTimeout(updateCookieStatus, 300);
-            }
-          });
+          const checkStatus = () => {
+            setTimeout(updateCookieStatus, 300);
+            settingsPanel.removeEventListener('click', checkStatus);
+          };
+          settingsPanel.addEventListener('click', checkStatus);
         }
       }, 100);
     };
