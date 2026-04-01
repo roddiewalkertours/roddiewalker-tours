@@ -48,7 +48,7 @@ const translations = {
     perPerson: 'per person',
     filters: { all: 'All', featured: 'Featured', easy: 'Easy', moderate: 'Moderate' },
     filterLabel: 'Filter:',
-    langTags: { pt: 'PT', en: 'EN' },
+    langTags: { pt: 'PT / ', en: 'EN' },
     noResults: 'No tours found.',
     slideshowCaption: 'Lisbon · Portugal',
   },
