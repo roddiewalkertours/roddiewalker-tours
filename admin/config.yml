@@ -1,1 +1,153 @@
+backend:
+  name: github
+  repo: roddiewalkertours/roddiewalker-tours
+  branch: main
+  auth_type: pkce
+  app_id: SUBSTITUIR_PELO_CLIENT_ID
 
+media_folder: assets/photos
+public_folder: /assets/photos
+
+locale: pt
+
+collections:
+  - name: tours
+    label: Percursos / Tours
+    files:
+      - name: percursos
+        label: Lista de Percursos
+        file: data/percursos.json
+        format: json
+        fields:
+          - name: tours
+            label: Percursos
+            label_singular: Percurso
+            widget: list
+            summary: "{{fields.pt.name}} — €{{fields.price_eur}}"
+            fields:
+              - label: ID (não alterar)
+                name: id
+                widget: string
+                hint: Identificador único. Não alterar após criação.
+
+              - label: Slug (não alterar)
+                name: slug
+                widget: string
+                hint: Usado nos URLs. Não alterar após criação.
+
+              - label: Destaque
+                name: featured
+                widget: boolean
+                default: false
+                hint: Aparece na secção de destaques da página inicial.
+
+              - label: Fotografia do percurso
+                name: image
+                widget: image
+                hint: "Formato recomendado: JPG, 800x500px mínimo."
+
+              - label: Duração (horas)
+                name: duration_hours
+                widget: number
+                value_type: float
+                min: 0.5
+                max: 8
+                step: 0.5
+                hint: "Exemplos: 1.5 = 1h30, 2 = 2h, 2.5 = 2h30"
+
+              - label: Dificuldade
+                name: difficulty
+                widget: select
+                options:
+                  - { label: "Fácil", value: "easy" }
+                  - { label: "Moderado", value: "moderate" }
+
+              - label: Preço (EUR)
+                name: price_eur
+                widget: number
+                value_type: int
+                min: 1
+
+              - label: Máximo de pessoas no grupo
+                name: max_group
+                widget: number
+                value_type: int
+                min: 1
+                max: 50
+
+              - label: Idiomas disponíveis
+                name: languages
+                widget: select
+                multiple: true
+                options:
+                  - { label: "Português", value: "pt" }
+                  - { label: "Inglês", value: "en" }
+                default: ["pt", "en"]
+
+              - label: Português
+                name: pt
+                widget: object
+                fields:
+                  - label: Nome do percurso
+                    name: name
+                    widget: string
+                    hint: "Ex: Lisboa Histórica"
+
+                  - label: Tagline
+                    name: tagline
+                    widget: string
+                    hint: "Frase curta descritiva. Ex: Das origens mouriscas à Lisboa pombalina"
+
+                  - label: Descrição
+                    name: description
+                    widget: text
+                    hint: Descrição completa do percurso (2-4 frases).
+
+                  - label: Etiqueta de dificuldade
+                    name: difficulty_label
+                    widget: string
+                    hint: "Escrever por extenso. Ex: Fácil ou Moderado"
+
+                  - label: Itinerário
+                    name: itinerary
+                    label_singular: Paragem
+                    widget: list
+                    summary: "{{fields.order}}. {{fields.stop}}"
+                    fields:
+                      - { label: "Ordem", name: order, widget: number, value_type: int }
+                      - { label: "Paragem", name: stop, widget: string }
+                      - { label: "Nota", name: note, widget: string, hint: "Breve descrição da paragem." }
+
+              - label: English
+                name: en
+                widget: object
+                fields:
+                  - label: Tour name
+                    name: name
+                    widget: string
+                    hint: "Ex: Historical Lisbon"
+
+                  - label: Tagline
+                    name: tagline
+                    widget: string
+                    hint: "Short descriptive phrase. Ex: From Moorish origins to Pombaline Lisbon"
+
+                  - label: Description
+                    name: description
+                    widget: text
+                    hint: Full tour description (2-4 sentences).
+
+                  - label: Difficulty label
+                    name: difficulty_label
+                    widget: string
+                    hint: "Write in full. Ex: Easy or Moderate"
+
+                  - label: Itinerary
+                    name: itinerary
+                    label_singular: Stop
+                    widget: list
+                    summary: "{{fields.order}}. {{fields.stop}}"
+                    fields:
+                      - { label: "Order", name: order, widget: number, value_type: int }
+                      - { label: "Stop", name: stop, widget: string }
+                      - { label: "Note", name: note, widget: string, hint: "Brief description of the stop." }
