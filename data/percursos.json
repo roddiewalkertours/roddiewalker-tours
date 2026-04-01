@@ -213,7 +213,7 @@
         "description": "Um percurso gastronómico e cultural pelos mercados, tascas e sabores tradicionais de Lisboa. Prove, descubra e compreenda a cidade através da sua cozinha.",
         "difficulty_label": "Fácil",
         "itinerary": [
-          { "order": 1, "stop": "Mercado da Ribeira", "note": "O Time Out Market e o mercado original lado a lado." },
+          { "order": 1, "stop": "Mercado de Campo de Ourique", "note": "O Time Out Market e o mercado original lado a lado." },
           { "order": 2, "stop": "Tasca tradicional", "note": "Petiscos e histórias com os locais." },
           { "order": 3, "stop": "Padaria típica", "note": "Pão, bolos e a rotina matinal lisboeta." },
           { "order": 4, "stop": "Mercearia de bairro", "note": "Produtos artesanais e produtores locais." },
@@ -226,7 +226,7 @@
         "description": "A gastronomic and cultural route through the markets, tascas and traditional flavours of Lisbon. Taste, discover and understand the city through its cuisine.",
         "difficulty_label": "Easy",
         "itinerary": [
-          { "order": 1, "stop": "Mercado da Ribeira", "note": "The Time Out Market and the original market side by side." },
+          { "order": 1, "stop": "Mercado de Campo de Ourique", "note": "The Time Out Market and the original market side by side." },
           { "order": 2, "stop": "Traditional tasca", "note": "Petiscos and stories with the locals." },
           { "order": 3, "stop": "Typical bakery", "note": "Bread, pastries and the Lisbon morning routine." },
           { "order": 4, "stop": "Neighbourhood deli", "note": "Artisan products and local producers." },
