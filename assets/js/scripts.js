@@ -196,8 +196,8 @@ function openModal(tour) {
         '<div class="itinerary-list">' + itineraryHtml + '</div>' +
         '<div class="tour-detail__cta">' +
           '<div class="tour-detail__price">€' + tour.price_eur + ' <span>' + t.perPerson + '</span></div>' +
-          '<a href="' + tour.booking_url + '" target="_blank" rel="noopener" class="btn btn--primary">' + t.bookNow + '</a>' +
-        '</div>' +
+          <!---Calendly'<a href="' + tour.booking_url + '" target="_blank" rel="noopener" class="btn btn--primary">' + t.bookNow + '</a>' +>
+         '<a href="' + (LANG === 'en' ? '/en/contact.html' : '/pt/contact.html') + '" class="btn btn--primary">' + t.bookNow + '</a>'        '</div>' +
       '</div>' +
     '</div>';
 
