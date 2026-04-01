@@ -31,7 +31,7 @@ const translations = {
     perPerson: 'por pessoa',
     filters: { all: 'Todos', featured: 'Destaques', easy: 'Fácil', moderate: 'Moderado' },
     filterLabel: 'Filtrar:',
-    langTags: { pt: 'PT', en: 'EN' },
+    langTags: { pt: 'PT / ', en: 'EN' },
     noResults: 'Nenhum percurso encontrado.',
     slideshowCaption: 'Lisboa · Portugal',
   },
