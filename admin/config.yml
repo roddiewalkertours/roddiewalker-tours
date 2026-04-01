@@ -4,7 +4,7 @@ backend:
   branch: main
   auth_type: pkce
   app_id: Ov23li1jwzx5DaMdzg4G
-  base_url: https://api.netlify.com
+  
 
 media_folder: assets/photos
 public_folder: /assets/photos
