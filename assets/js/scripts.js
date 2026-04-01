@@ -1,6 +1,5 @@
 /* ============================================================
    Roddie Walker Tours — scripts.js
-   Versão final sem caracteres indesejados
    ============================================================ */
 
 'use strict';
@@ -59,7 +58,7 @@ const t = translations[LANG];
 // ── Fetch tours ──────────────────────────────────────────
 async function loadTours() {
   try {
-    const response = await fetch('../data/percursos.json');
+    const response = await fetch('/data/percursos.json');
     if (!response.ok) throw new Error('HTTP ' + response.status);
     const data = await response.json();
     console.log('Tours carregados:', data.tours.length);
@@ -102,15 +101,15 @@ function renderTours(tours, container) {
       const l = tour.languages[i];
       langTagsHtml += '<span class="tour-card__lang-tag">' + (t.langTags[l] || l.toUpperCase()) + '</span>';
     }
-    
+
     let featuredBadgeHtml = '';
     if (tour.featured) {
       featuredBadgeHtml = '<span class="tour-card__badge">Destaque</span>';
     }
-    
+
     const priceHtml = '<div class="tour-price">€' + tour.price_eur + ' <small>' + t.perPerson + '</small></div>';
 
-    card.innerHTML = 
+    card.innerHTML =
       '<div class="tour-card__img-wrap">' +
         '<img class="tour-card__img" src="' + tour.image + '" alt="' + local.name + '" loading="lazy">' +
         featuredBadgeHtml +
@@ -152,11 +151,11 @@ let currentModal = null;
 
 function openModal(tour) {
   console.log('Opening modal for:', tour.id);
-  
+
   if (currentModal) {
     closeModal();
   }
-  
+
   const local = tour[LANG];
   if (!local) {
     console.error('No translation found for tour:', tour.id);
@@ -166,7 +165,7 @@ function openModal(tour) {
   let itineraryHtml = '';
   for (let i = 0; i < local.itinerary.length; i++) {
     const item = local.itinerary[i];
-    itineraryHtml += 
+    itineraryHtml +=
       '<div class="itinerary-item">' +
         '<div class="itinerary-item__num">' + item.order + '</div>' +
         '<div>' +
@@ -176,10 +175,13 @@ function openModal(tour) {
       '</div>';
   }
 
+  // URL de contacto conforme o idioma da página
+  const contactUrl = LANG === 'en' ? '/en/contact.html' : '/pt/contact.html';
+
   const modal = document.createElement('div');
   modal.className = 'tour-detail open';
   modal.id = 'tour-modal';
-  modal.innerHTML = 
+  modal.innerHTML =
     '<div class="tour-detail__panel">' +
       '<button class="tour-detail__close" aria-label="' + t.close + '">' + t.close + '</button>' +
       '<img class="tour-detail__img" src="' + tour.image + '" alt="' + local.name + '">' +
@@ -196,8 +198,8 @@ function openModal(tour) {
         '<div class="itinerary-list">' + itineraryHtml + '</div>' +
         '<div class="tour-detail__cta">' +
           '<div class="tour-detail__price">€' + tour.price_eur + ' <span>' + t.perPerson + '</span></div>' +
-          <!---Calendly'<a href="' + tour.booking_url + '" target="_blank" rel="noopener" class="btn btn--primary">' + t.bookNow + '</a>' +>
-         '<a href="' + (LANG === 'en' ? '/en/contact.html' : '/pt/contact.html') + '" class="btn btn--primary">' + t.bookNow + '</a>'        '</div>' +
+          '<a href="' + contactUrl + '" class="btn btn--primary">' + t.bookNow + '</a>' +
+        '</div>' +
       '</div>' +
     '</div>';
 
@@ -209,13 +211,13 @@ function openModal(tour) {
   if (closeBtn) {
     closeBtn.addEventListener('click', closeModal);
   }
-  
+
   modal.addEventListener('click', function(e) {
     if (e.target === modal) {
       closeModal();
     }
   });
-  
+
   function escHandler(e) {
     if (e.key === 'Escape') {
       closeModal();
@@ -305,7 +307,7 @@ function initSlideshow() {
 
   const images = [];
   for (let i = 1; i <= 10; i++) {
-    images.push('../assets/photos/lisbon-' + i + '.jpg');
+    images.push('/assets/photos/lisbon-' + i + '.jpg');
   }
 
   let current = 0;
@@ -340,7 +342,7 @@ function initSlideshow() {
     slide.style.height = '100%';
     slide.style.opacity = index === 0 ? '1' : '0';
     slide.style.transition = 'opacity 1s ease';
-    
+
     const img = document.createElement('img');
     img.src = src;
     img.style.width = '100%';
@@ -348,7 +350,7 @@ function initSlideshow() {
     img.style.objectFit = 'cover';
     img.alt = LANG === 'pt' ? 'Lisboa' : 'Lisbon';
     img.onerror = function() { slide.remove(); };
-    
+
     const caption = document.createElement('div');
     caption.className = 'slide-caption';
     caption.textContent = t.slideshowCaption;
@@ -362,12 +364,12 @@ function initSlideshow() {
     caption.style.fontFamily = 'var(--ff-ui)';
     caption.style.fontSize = '0.7rem';
     caption.style.textAlign = 'center';
-    
+
     slide.appendChild(img);
     slide.appendChild(caption);
     slidesWrapper.appendChild(slide);
     loadedImages.push({ slide: slide, index: index });
-    
+
     updateDots();
   }
 
