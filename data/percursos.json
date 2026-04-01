@@ -10,7 +10,7 @@
       "price_eur": 25,
       "max_group": 10,
       "languages": ["pt", "en"],
-      "booking_url": "https://calendly.com/roddiewalker",
+      "booking_url": "/pt/contact.html",
       "pt": {
         "name": "Lisboa Histórica",
         "tagline": "Das origens mouriscas à Lisboa pombalina",
