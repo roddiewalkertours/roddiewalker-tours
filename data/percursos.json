@@ -324,18 +324,18 @@
           },
           {
             "order": 3,
+            "stop": "Largo do Carmo",
+            "note": "O Largo do Carmo, situado no Chiado em Lisboa, é uma das praças mais emblemáticas e históricas da cidade."
+          },
+          {
+            "order": 4,
             "stop": "Largo de Camões",
             "note": "Homenagem ao épico dos descobrimentos."
           },
           {
-            "order": 4,
+            "order": 5,
             "stop": "Bairro Alto",
             "note": "Onde a boémia literária ganhou vida."
-          },
-          {
-            "order": 5,
-            "stop": "Casa Fernando Pessoa",
-            "note": "A morada do poeta e o seu espólio."
           }
         ]
       },
@@ -357,18 +357,18 @@
           },
           {
             "order": 3,
+            "stop": "Carmo Square",
+            "note": "Largo do Carmo is a picturesque, tree-lined square in Lisbon's Chiado district."
+          },
+          {
+            "order": 4,
             "stop": "Largo de Camões",
             "note": "Tribute to the epic poet of the Discoveries."
           },
           {
-            "order": 4,
+            "order": 5,
             "stop": "Bairro Alto",
             "note": "Where literary bohemia came alive."
-          },
-          {
-            "order": 5,
-            "stop": "Casa Fernando Pessoa",
-            "note": "The poet's home and his legacy."
           }
         ]
       },
