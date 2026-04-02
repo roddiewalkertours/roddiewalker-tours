@@ -298,9 +298,9 @@
       "slug": "lisboa-literaria",
       "featured": false,
       "image": "../assets/photos/literaria.jpg",
-      "duration_hours": 2,
-      "difficulty": "easy",
-      "price_eur": 22,
+      "duration_hours": 4,
+      "difficulty": "moderate",
+      "price_eur": 50,
       "max_group": 8,
       "languages": [
         "pt",
@@ -308,7 +308,7 @@
       ],
       "pt": {
         "name": "Lisboa Literária",
-        "tagline": "Nas pegadas de Pessoa, Saramago e Eça",
+        "tagline": "Nas pegadas de Pessoa, António Ribeiro \"Chiado\" e Eça",
         "description": "Um passeio pelas ruas que inspiraram os grandes escritores portugueses. Dos cafés onde Pessoa escrevia às ruas de Eça, a cidade como palco literário.",
         "difficulty_label": "Fácil",
         "itinerary": [
@@ -341,7 +341,7 @@
       },
       "en": {
         "name": "Literary Lisbon",
-        "tagline": "In the footsteps of Pessoa, Saramago and Eça",
+        "tagline": "In the footsteps of Pessoa, António Ribeiro \"Chiado\" and Eça",
         "description": "A walk through the streets that inspired Portugal's greatest writers. From the cafés where Pessoa wrote to the neighbourhoods of Eça, the city as a literary stage.",
         "difficulty_label": "Easy",
         "itinerary": [
