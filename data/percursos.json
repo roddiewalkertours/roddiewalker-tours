@@ -96,10 +96,10 @@
       "slug": "alfama-escondida",
       "featured": true,
       "image": "../assets/photos/alfama.jpg",
-      "duration_hours": 2,
+      "duration_hours": 3,
       "difficulty": "moderate",
-      "price_eur": 25,
-      "max_group": 8,
+      "price_eur": 50,
+      "max_group": 10,
       "languages": [
         "pt",
         "en"
@@ -139,6 +139,11 @@
             "order": 6,
             "stop": "Tasca escondida",
             "note": "Um copo de vinho onde só os locais vão."
+          },
+          {
+            "order": 7,
+            "stop": "Ruínas de Anfiteatro Romano",
+            "note": "Vestígios arqueológicos do anfiteatro Romano de Felicitas Iulia Olisipo."
           }
         ]
       },
@@ -177,6 +182,11 @@
             "order": 6,
             "stop": "Hidden tasca",
             "note": "A glass of wine where only locals go."
+          },
+          {
+            "order": 7,
+            "stop": "Ruins of Roman Amphitheatre",
+            "note": "Archaeological findings  of  the Roman anphetheatre of Felicitas Iulia Olisipo."
           }
         ]
       },
