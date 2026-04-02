@@ -197,9 +197,9 @@
       "slug": "belem-monumental",
       "featured": true,
       "image": "../assets/photos/belem.jpg",
-      "duration_hours": 3,
+      "duration_hours": 4,
       "difficulty": "easy",
-      "price_eur": 28,
+      "price_eur": 80,
       "max_group": 12,
       "languages": [
         "pt",
@@ -240,6 +240,11 @@
             "order": 6,
             "stop": "Margem do Tejo",
             "note": "O mesmo horizonte que os navegadores viram."
+          },
+          {
+            "order": 7,
+            "stop": "Palácio Nacional da Ajuda",
+            "note": "Uma viagem inesquecível aos interiores autênticos da casa dos reis de Portugal. Conheça o Palácio. 6a mesa do Tributo à Vista Alegre. Serviço 200 Anos."
           }
         ]
       },
@@ -278,6 +283,11 @@
             "order": 6,
             "stop": "Tagus riverbank",
             "note": "The same horizon the navigators once gazed upon."
+          },
+          {
+            "order": 7,
+            "stop": "Ajuda National Palace",
+            "note": "The Ajuda National Palace was the official royal house in the second half of the 19th century."
           }
         ]
       },
