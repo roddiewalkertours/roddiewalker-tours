@@ -197,10 +197,10 @@
       "slug": "belem-monumental",
       "featured": true,
       "image": "../assets/photos/belem.jpg",
-      "duration_hours": 4,
+      "duration_hours": 5,
       "difficulty": "easy",
       "price_eur": 80,
-      "max_group": 12,
+      "max_group": 10,
       "languages": [
         "pt",
         "en"
