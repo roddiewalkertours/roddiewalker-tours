@@ -379,9 +379,9 @@
       "slug": "arte-urbana",
       "featured": false,
       "image": "../assets/photos/streetart.jpg",
-      "duration_hours": 2,
+      "duration_hours": 2.5,
       "difficulty": "easy",
-      "price_eur": 22,
+      "price_eur": 50,
       "max_group": 10,
       "languages": [
         "pt",
