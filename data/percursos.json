@@ -462,8 +462,8 @@
       "image": "../assets/photos/food.jpg",
       "duration_hours": 3,
       "difficulty": "easy",
-      "price_eur": 35,
-      "max_group": 8,
+      "price_eur": 80,
+      "max_group": 10,
       "languages": [
         "pt",
         "en"
@@ -476,26 +476,31 @@
         "itinerary": [
           {
             "order": 1,
-            "stop": "Mercado de Campo de Ourique",
-            "note": "O Time Out Market e o mercado original lado a lado."
+            "stop": "Prova de azeites",
+            "note": "Degustação de azeites e outros produtos regionais."
           },
           {
             "order": 2,
+            "stop": "Mercado de Campo de Ourique",
+            "note": "O Mercado de Campo d'Ourique originalmente inaugurado em 1934."
+          },
+          {
+            "order": 3,
             "stop": "Tasca tradicional",
             "note": "Petiscos e histórias com os locais."
           },
           {
-            "order": 3,
+            "order": 4,
             "stop": "Padaria típica",
             "note": "Pão, bolos e a rotina matinal lisboeta."
           },
           {
-            "order": 4,
+            "order": 5,
             "stop": "Mercearia de bairro",
             "note": "Produtos artesanais e produtores locais."
           },
           {
-            "order": 5,
+            "order": 6,
             "stop": "Pastelaria histórica",
             "note": "Café e pastel — o ritual sagrado."
           }
@@ -509,26 +514,31 @@
         "itinerary": [
           {
             "order": 1,
-            "stop": "Mercado de Campo de Ourique",
-            "note": "The Time Out Market and the original market side by side."
+            "stop": "Olive oil tasting",
+            "note": "Enjoy several olive oils, as well as regional goods."
           },
           {
             "order": 2,
+            "stop": "Mercado de Campo de Ourique",
+            "note": "Mercado de Campo de Ourique is a neighbourhood food market originally opened in 1934."
+          },
+          {
+            "order": 3,
             "stop": "Traditional tasca",
             "note": "Petiscos and stories with the locals."
           },
           {
-            "order": 3,
+            "order": 4,
             "stop": "Typical bakery",
             "note": "Bread, pastries and the Lisbon morning routine."
           },
           {
-            "order": 4,
+            "order": 5,
             "stop": "Neighbourhood deli",
             "note": "Artisan products and local producers."
           },
           {
-            "order": 5,
+            "order": 6,
             "stop": "Historic pastry shop",
             "note": "Coffee and pastel de nata — the sacred ritual."
           }
