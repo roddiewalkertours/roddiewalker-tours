@@ -4,7 +4,7 @@
       "id": "lisbon-historical",
       "slug": "lisboa-historica",
       "featured": true,
-      "image": "../assets/photos/lisbon-historical.jpg",
+      "image": "/assets/photos/BaixaLisboa.jpg",
       "duration_hours": 4,
       "difficulty": "moderate",
       "price_eur": 50,
