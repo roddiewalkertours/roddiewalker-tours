@@ -73,7 +73,7 @@
             <div class="contact-icon">✉️</div>
             <div class="contact-detail">
               <h4>Email</h4>
-              <a href="mailto:roddiewalker.tours@gmail.com">roddiewalker.tours@gmail.com</a>
+              <a href="/cdn-cgi/l/email-protection#bac8d5deded3dfcddbd6d1dfc894ced5cfc8c9faddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="e2908d86868b8795838e898790cc968d979091a2858f838b8ecc818d8f">[email&#160;protected]</span></a>
             </div>
           </div>
 
@@ -106,10 +106,7 @@
             <p style="font-size:0.95rem;color:var(--stone);margin:0;">Todos os tours estão disponíveis como experiências privadas. Ideal para famílias, casais, eventos corporativos ou celebrações especiais. Itinerários personalizados disponíveis mediante pedido.</p>
           </div>
 
-          <div style="margin-top:24px;padding:28px;background:var(--cream);border-radius:var(--radius-lg);border-left:4px solid var(--terracotta);">
-            <h3 style="font-family:var(--ff-ui);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px;">Em Breve</h3>
-            <p style="font-size:0.95rem;color:var(--stone);margin:0;">Integração com Calendly, WhatsApp Business e um sistema de reservas online estão a ser implementados. Entretanto, o formulário ou email funcionam perfeitamente.</p>
-          </div>
+
         </div>
 
         <div>
@@ -183,6 +180,29 @@
           </button>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Disponibilidade</span>
+        <h2 class="section-title">Dias Ocupados</h2>
+        <p class="section-subtitle">Consulte o calendário abaixo para verificar os dias já reservados antes de enviar o seu pedido.</p>
+      </div>
+      <div style="background:var(--cream);border-radius:var(--radius-lg);padding:32px;text-align:center;">
+        <div style="position:relative;width:100%;overflow:hidden;border-radius:var(--radius-md);">
+          <iframe
+            src="https://calendar.google.com/calendar/embed?src=f878c31b7b2833730222d7011216bf918841727184472f79c6c85cae71a50134%40group.calendar.google.com&ctz=Europe%2FLisbon&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=pt"
+            style="border:0;width:100%;min-height:500px;display:block;"
+            frameborder="0"
+            scrolling="no">
+          </iframe>
+        </div>
+        <p style="font-family:var(--ff-ui);font-size:0.82rem;color:var(--stone);margin-top:16px;">
+          Os dias assinalados no calendário estão ocupados. Os dias em branco estão disponíveis para reserva.
+        </p>
       </div>
     </div>
   </section>
@@ -268,7 +288,7 @@
     </div>
   </footer>
 
-  <script src="/assets/js/cookie-consent.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
     const cookieConsent = new CookieConsentManager({
@@ -542,13 +562,4 @@
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
-</body>
-</html>
+        if (entry.isIn
