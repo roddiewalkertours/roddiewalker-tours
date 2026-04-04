@@ -73,7 +73,7 @@
             <div class="contact-icon">✉️</div>
             <div class="contact-detail">
               <h4>Email</h4>
-              <a href="/cdn-cgi/l/email-protection#bac8d5deded3dfcddbd6d1dfc894ced5cfc8c9faddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="e2908d86868b8795838e898790cc968d979091a2858f838b8ecc818d8f">[email&#160;protected]</span></a>
+              <a href="mailto:roddiewalker.tours@gmail.com">roddiewalker.tours@gmail.com</a>
             </div>
           </div>
 
@@ -105,14 +105,12 @@
             <h3 style="font-family:var(--ff-ui);font-size:0.75rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--azulejo);margin-bottom:12px;">Tours Privados</h3>
             <p style="font-size:0.95rem;color:var(--stone);margin:0;">Todos os tours estão disponíveis como experiências privadas. Ideal para famílias, casais, eventos corporativos ou celebrações especiais. Itinerários personalizados disponíveis mediante pedido.</p>
           </div>
-
-
         </div>
 
         <div>
           <span class="eyebrow">Formulário de Reserva</span>
           <h2 style="font-family:var(--ff-display);font-size:clamp(1.6rem,3vw,2rem);margin:16px 0 24px;">Envie uma Mensagem</h2>
-          
+
           <form class="contact-form" id="booking-form">
             <div class="form-row">
               <div class="form-group">
@@ -134,12 +132,12 @@
               <label for="tour">Tour de Interesse</label>
               <select id="tour" name="Tour de Interesse">
                 <option value="">— Selecione um tour —</option>
-                <option value="Alfama Escondida — €35">Alfama Escondida — €35</option>
-                <option value="Belém Monumental — €35">Belém Monumental — €35</option>
-                <option value="Lisboa Histórica — €30">Lisboa Histórica — €30</option>
-                <option value="Lisboa Literária — €30">Lisboa Literária — €30</option>
-                <option value="Arte Urbana & Alternativa — €30">Arte Urbana & Alternativa — €30</option>
-                <option value="Comida & Cultura — €55">Comida & Cultura — €55</option>
+                <option value="Alfama Escondida — €25">Alfama Escondida — €25</option>
+                <option value="Belém Monumental — €28">Belém Monumental — €28</option>
+                <option value="Lisboa Histórica — €25">Lisboa Histórica — €25</option>
+                <option value="Lisboa Literária — €22">Lisboa Literária — €22</option>
+                <option value="Arte Urbana & Alternativa — €22">Arte Urbana & Alternativa — €22</option>
+                <option value="Comida & Cultura — €35">Comida & Cultura — €35</option>
                 <option value="Tour Privado / Personalizado">Tour Privado / Personalizado</option>
               </select>
             </div>
@@ -174,7 +172,7 @@
           <p style="font-family:var(--ff-ui);font-size:0.75rem;color:var(--stone);margin-top:16px;text-align:center;">
             Ao enviar este formulário, será aberto o seu cliente de email. Basta clicar em enviar.
           </p>
-          
+
           <button id="generate-flyer" class="btn btn--outline-dark" style="width:100%;margin-top:20px;justify-content:center;">
             📄 Leve um panfleto consigo
           </button>
@@ -191,16 +189,17 @@
         <h2 class="section-title">Dias Ocupados</h2>
         <p class="section-subtitle">Consulte o calendário abaixo para verificar os dias já reservados antes de enviar o seu pedido.</p>
       </div>
-      <div style="background:var(--cream);border-radius:var(--radius-lg);padding:32px;text-align:center;">
-        <div style="position:relative;width:100%;overflow:hidden;border-radius:var(--radius-md);">
+      <div style="background:var(--cream);border-radius:var(--radius-lg);padding:32px;">
+        <div style="position:relative;width:100%;border-radius:var(--radius-md);overflow:hidden;">
           <iframe
             src="https://calendar.google.com/calendar/embed?src=f878c31b7b2833730222d7011216bf918841727184472f79c6c85cae71a50134%40group.calendar.google.com&ctz=Europe%2FLisbon&showTitle=0&showNav=1&showDate=1&showPrint=0&showTabs=0&showCalendars=0&showTz=0&hl=pt"
-            style="border:0;width:100%;min-height:500px;display:block;"
+            style="border:0;width:100%;height:540px;display:block;"
             frameborder="0"
             scrolling="no">
           </iframe>
+          <div style="position:absolute;bottom:0;left:0;right:0;height:28px;background:var(--cream);"></div>
         </div>
-        <p style="font-family:var(--ff-ui);font-size:0.82rem;color:var(--stone);margin-top:16px;">
+        <p style="font-family:var(--ff-ui);font-size:0.82rem;color:var(--stone);margin-top:16px;text-align:center;">
           Os dias assinalados no calendário estão ocupados. Os dias em branco estão disponíveis para reserva.
         </p>
       </div>
@@ -288,7 +287,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/assets/js/cookie-consent.js"></script>
+  <script src="/assets/js/cookie-consent.js"></script>
   <script src="/assets/js/scripts.js"></script>
   <script>
     const cookieConsent = new CookieConsentManager({
@@ -309,7 +308,7 @@
     if (form) {
       form.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         const firstName = document.getElementById('fname').value;
         const lastName = document.getElementById('lname').value;
         const email = document.getElementById('email').value;
@@ -317,40 +316,38 @@
         const date = document.getElementById('date').value;
         const guests = document.getElementById('guests').value;
         const message = document.getElementById('message').value;
-        
+
         if (!firstName || !lastName || !email) {
           alert('Por favor, preencha os campos obrigatórios: Primeiro Nome, Último Nome e Email.');
           return;
         }
-        
-        const subject = `Nova Reserva: ${tour || 'Pedido de Informação'} - ${firstName} ${lastName}`;
-        
+
+        const subject = 'Nova Reserva: ' + (tour || 'Pedido de Informação') + ' - ' + firstName + ' ' + lastName;
+
         let body = '';
-        body += `Nova solicitação de reserva através do site Roddie Walker Tours\n`;
-        body += `=========================================\n\n`;
-        body += `DADOS DO CLIENTE\n`;
-        body += `----------------\n`;
-        body += `Primeiro Nome: ${firstName}\n`;
-        body += `Último Nome: ${lastName}\n`;
-        body += `Email: ${email}\n\n`;
-        body += `DETALHES DA RESERVA\n`;
-        body += `------------------\n`;
-        body += `Tour de Interesse: ${tour || 'Não especificado'}\n`;
-        body += `Data Preferida: ${date || 'Não especificada'}\n`;
-        body += `Número de Pessoas: ${guests}\n\n`;
-        body += `MENSAGEM\n`;
-        body += `--------\n`;
-        body += `${message || 'Nenhuma mensagem adicional.'}\n\n`;
-        body += `---\n`;
-        body += `Esta mensagem foi enviada através do formulário de contacto do site Roddie Walker Tours.`;
-        
-        const mailtoLink = `mailto:roddiewalker.tours@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-        
+        body += 'Nova solicitação de reserva através do site Roddie Walker Tours\n';
+        body += '=========================================\n\n';
+        body += 'DADOS DO CLIENTE\n';
+        body += '----------------\n';
+        body += 'Primeiro Nome: ' + firstName + '\n';
+        body += 'Último Nome: ' + lastName + '\n';
+        body += 'Email: ' + email + '\n\n';
+        body += 'DETALHES DA RESERVA\n';
+        body += '------------------\n';
+        body += 'Tour de Interesse: ' + (tour || 'Não especificado') + '\n';
+        body += 'Data Preferida: ' + (date || 'Não especificada') + '\n';
+        body += 'Número de Pessoas: ' + guests + '\n\n';
+        body += 'MENSAGEM\n';
+        body += '--------\n';
+        body += (message || 'Nenhuma mensagem adicional.') + '\n\n';
+        body += '---\n';
+        body += 'Esta mensagem foi enviada através do formulário de contacto do site Roddie Walker Tours.';
+
+        const mailtoLink = 'mailto:roddiewalker.tours@gmail.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
         window.location.href = mailtoLink;
       });
     }
 
-    // Função para carregar imagem e converter para base64
     function loadImageAsBase64(src) {
       return new Promise((resolve, reject) => {
         const img = new Image();
@@ -368,84 +365,58 @@
       });
     }
 
-    // Function to get image dimensions
     async function getImageDimensions(src) {
       return new Promise((resolve) => {
         const img = new Image();
-        img.onload = () => {
-          resolve({ width: img.width, height: img.height });
-        };
-        img.onerror = () => {
-          resolve({ width: 1, height: 1 });
-        };
+        img.onload = () => { resolve({ width: img.width, height: img.height }); };
+        img.onerror = () => { resolve({ width: 1, height: 1 }); };
         img.src = src;
       });
     }
 
-    // Function to generate flyer PDF
     async function generateFlyer() {
       const button = document.getElementById('generate-flyer');
       const originalText = button.innerHTML;
       button.innerHTML = '⏳ A gerar panfleto...';
       button.disabled = true;
-      
+
       try {
         const { jsPDF } = window.jspdf;
-        
-        const pdf = new jsPDF({
-          orientation: 'portrait',
-          unit: 'mm',
-          format: 'a4'
-        });
-        
+        const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
         const pageWidth = pdf.internal.pageSize.getWidth();
         const pageHeight = pdf.internal.pageSize.getHeight();
         const marginLeft = 15;
         const marginRight = 15;
         const marginTop = 15;
         const marginBottom = 15;
-        
         let yPos = marginTop;
-        
-        // 1. Logo on left
-        let logoData = null;
+
         try {
-          logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
-          if (logoData) {
-            pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12);
-          }
-        } catch (e) {
-          console.log('Logo not loaded');
-        }
-        
-        // 2. Centered title
+          const logoData = await loadImageAsBase64('/assets/logo/favicon_512.png');
+          if (logoData) { pdf.addImage(logoData, 'PNG', marginLeft, yPos, 12, 12); }
+        } catch (e) { console.log('Logo not loaded'); }
+
         const titleText = 'Roddie Walker Tours';
         const titleWidth = pdf.getTextWidth(titleText);
         const titleX = (pageWidth - titleWidth) / 2;
-        
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(22);
         pdf.setTextColor(192, 90, 42);
         pdf.text('Roddie', titleX, yPos + 9);
-        
         const roddieWidth = pdf.getTextWidth('Roddie');
         pdf.setTextColor(42, 92, 138);
         pdf.text(' Walker', titleX + roddieWidth, yPos + 9);
-        
         const walkerWidth = pdf.getTextWidth(' Walker');
         pdf.setTextColor(192, 90, 42);
         pdf.text(' Tours', titleX + roddieWidth + walkerWidth, yPos + 9);
-        
         yPos += 18;
-        
+
         pdf.setDrawColor(192, 90, 42);
         pdf.setLineWidth(0.5);
         pdf.line(marginLeft, yPos, pageWidth - marginRight, yPos);
         yPos += 12;
-        
-        // 3. Layout: Rodrigo photo on left, vertical mosaic on right
+
         const leftPhotoWidth = (pageWidth - marginLeft - marginRight - 15) / 2;
-        
         let rodPhotoHeight = 0;
         try {
           const rodPhotoData = await loadImageAsBase64('/assets/photos/Rod-photo.png');
@@ -454,45 +425,34 @@
             rodPhotoHeight = (rodDimensions.height / rodDimensions.width) * leftPhotoWidth;
             pdf.addImage(rodPhotoData, 'PNG', marginLeft, yPos, leftPhotoWidth, rodPhotoHeight);
           }
-        } catch (e) {
-          console.log('Photo not loaded');
-          rodPhotoHeight = 85;
-        }
-        
-        // Vertical mosaic of 2 photos on right
+        } catch (e) { console.log('Photo not loaded'); rodPhotoHeight = 85; }
+
         const rightPhotoX = marginLeft + leftPhotoWidth + 15;
         const rightPhotoWidth = leftPhotoWidth;
         const gapBetweenRightPhotos = 8;
         const eachPhotoHeight = (rodPhotoHeight - gapBetweenRightPhotos) / 2;
-        
+
         try {
           const topPhotoData = await loadImageAsBase64('/assets/photos/alfama.jpg');
-          if (topPhotoData) {
-            pdf.addImage(topPhotoData, 'PNG', rightPhotoX, yPos, rightPhotoWidth, eachPhotoHeight);
-          }
-        } catch (e) {
-          console.log('alfama.jpg not loaded');
-        }
-        
+          if (topPhotoData) { pdf.addImage(topPhotoData, 'PNG', rightPhotoX, yPos, rightPhotoWidth, eachPhotoHeight); }
+        } catch (e) { console.log('alfama.jpg not loaded'); }
+
         try {
           const bottomPhotoData = await loadImageAsBase64('/assets/photos/literaria.jpg');
           if (bottomPhotoData) {
             const bottomY = yPos + eachPhotoHeight + gapBetweenRightPhotos;
             pdf.addImage(bottomPhotoData, 'PNG', rightPhotoX, bottomY, rightPhotoWidth, eachPhotoHeight);
           }
-        } catch (e) {
-          console.log('literaria.jpg not loaded');
-        }
-        
+        } catch (e) { console.log('literaria.jpg not loaded'); }
+
         yPos += rodPhotoHeight + 12;
-        
-        // 4. Main text
+
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(14);
         pdf.setTextColor(192, 90, 42);
         pdf.text('TOURS PRIVADOS', marginLeft, yPos);
         yPos += 8;
-        
+
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(11);
         pdf.setTextColor(28, 26, 24);
@@ -501,8 +461,7 @@
         const textLines = pdf.splitTextToSize(mainText, textWidth);
         pdf.text(textLines, marginLeft, yPos);
         yPos += (textLines.length * 6) + 12;
-        
-        // 5. Contact information
+
         pdf.setFont('helvetica', 'bold');
         pdf.setFontSize(10);
         pdf.setTextColor(28, 26, 24);
@@ -514,8 +473,7 @@
         yPos += 6;
         pdf.text('Instagram: @roddiewalker.tours', marginLeft, yPos);
         yPos += 12;
-        
-        // 6. QR Code
+
         const qrCodeData = await new Promise((resolve) => {
           const img = new Image();
           img.crossOrigin = 'Anonymous';
@@ -528,38 +486,34 @@
             resolve(canvas.toDataURL('image/png'));
           };
           img.onerror = () => resolve(null);
-          img.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent('https://www.roddiewalker-tours.com')}&t=${Date.now()}`;
+          img.src = 'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + encodeURIComponent('https://www.roddiewalker-tours.com') + '&t=' + Date.now();
         });
-        
+
         if (qrCodeData) {
           const qrSize = 45;
           const qrX = pageWidth - marginRight - qrSize;
           const qrY = pageHeight - marginBottom - qrSize - 5;
           pdf.addImage(qrCodeData, 'PNG', qrX, qrY, qrSize, qrSize);
         }
-        
-        // 7. Footer
+
         pdf.setFont('helvetica', 'normal');
         pdf.setFontSize(8);
         pdf.setTextColor(122, 110, 98);
         pdf.text('www.roddiewalker-tours.com', marginLeft, pageHeight - marginBottom - 5);
-        
+
         pdf.save('RoddieWalkerTours_Panfleto.pdf');
-        
+
       } catch (error) {
         console.error('Error generating flyer:', error);
-        alert('An error occurred while generating the flyer. Please try again.');
+        alert('Ocorreu um erro ao gerar o panfleto. Por favor tente novamente.');
       } finally {
         button.innerHTML = originalText;
         button.disabled = false;
       }
     }
-    
-    const flyerBtn = document.getElementById('generate-flyer');
-    if (flyerBtn) {
-      flyerBtn.addEventListener('click', generateFlyer);
-    }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIn
+    const flyerBtn = document.getElementById('generate-flyer');
+    if (flyerBtn) { flyerBtn.addEventListener('click', generateFlyer); }
+  </script>
+</body>
+</html>
