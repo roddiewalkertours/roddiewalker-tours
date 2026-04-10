@@ -33,7 +33,7 @@ const translations = {
     filterLabel: 'Filtrar:',
     langTags: { pt: 'PT / ', en: 'EN' },
     noResults: 'Nenhum percurso encontrado.',
-    slideshowCaption: 'Lisboa · Portugal',
+    slideshowCaption: 'Portugal',
   },
   en: {
     loading: 'Loading tours…',
