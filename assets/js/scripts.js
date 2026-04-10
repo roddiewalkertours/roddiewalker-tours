@@ -50,7 +50,7 @@ const translations = {
     filterLabel: 'Filter:',
     langTags: { pt: 'PT / ', en: 'EN' },
     noResults: 'No tours found.',
-    slideshowCaption: 'Lisbon · Portugal',
+    slideshowCaption: 'Portugal',
   },
 };
 
